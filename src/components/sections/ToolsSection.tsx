@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchGardenData } from '@/utils/dataService';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { tools } from 'lucide-react';
+import { Tool } from 'lucide-react';
 
 const ToolsSection = () => {
   const { data, isLoading } = useQuery({

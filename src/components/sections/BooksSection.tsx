@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchGardenData } from '@/utils/dataService';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { book } from 'lucide-react';
+import { Book } from 'lucide-react';
 
 const BooksSection = () => {
   const { data, isLoading } = useQuery({
