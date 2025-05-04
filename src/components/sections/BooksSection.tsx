@@ -19,6 +19,20 @@ const BooksSection = ({ fullPage = false }: BooksSectionProps) => {
   const books = data?.books || [];
   const displayedBooks = fullPage ? books : books.slice(0, 4);
 
+  // Garden book specific images
+  const getBookImage = (imageUrl: string, index: number) => {
+    if (!imageUrl) return '';
+    
+    const bookImages = [
+      'https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e',
+      'https://images.unsplash.com/photo-1544947950-fa07a98d237f',
+      'https://images.unsplash.com/photo-1512820790803-83ca734da794',
+      'https://images.unsplash.com/photo-1598900438157-e5d96e6f0cf6'
+    ];
+    
+    return bookImages[index % bookImages.length];
+  };
+
   return (
     <section id="books" className="section-container">
       <h2 className="section-title">Related Books</h2>
@@ -35,22 +49,24 @@ const BooksSection = ({ fullPage = false }: BooksSectionProps) => {
       ) : (
         <div className="card-grid">
           {displayedBooks.map((book, index) => (
-            <Card key={index} className="garden-card">
-              <div className="h-48 overflow-hidden">
-                <img 
-                  src={book.image} 
-                  alt={book.title} 
-                  className="garden-card-image" 
-                />
-              </div>
-              <CardContent className="p-4">
-                <h3 className="garden-card-title">{book.title}</h3>
-                <p className="garden-card-description mb-4">{book.description}</p>
-                <Button variant="outline" className="w-full text-garden-green border-garden-green hover:bg-garden-green/10">
-                  Learn More
-                </Button>
-              </CardContent>
-            </Card>
+            <Link to={`/books/${index}`} key={index} className="garden-card-link">
+              <Card className="garden-card transition-transform hover:scale-[1.02]">
+                <div className="h-48 overflow-hidden">
+                  <img 
+                    src={getBookImage(book.image, index)} 
+                    alt={book.title} 
+                    className="garden-card-image" 
+                  />
+                </div>
+                <CardContent className="p-4">
+                  <h3 className="garden-card-title">{book.title}</h3>
+                  <p className="garden-card-description mb-4">{book.description}</p>
+                  <Button variant="outline" className="w-full text-garden-green border-garden-green hover:bg-garden-green/10">
+                    View Book Details
+                  </Button>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
       )}

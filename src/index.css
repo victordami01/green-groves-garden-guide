@@ -1,89 +1,72 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 100 25% 98%;
-    --foreground: 120 3% 20%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 120 3% 20%;
+    --card-foreground: 222.2 84% 4.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 120 3% 20%;
+    --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 134 65% 40%;
-    --primary-foreground: 120 10% 95%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 84 25% 90%;
-    --secondary-foreground: 134 65% 30%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --muted: 84 15% 90%;
-    --muted-foreground: 120 3% 40%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 84 25% 90%;
-    --accent-foreground: 134 65% 30%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 120 10% 95%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 134 20% 85%;
-    --input: 134 20% 85%;
-    --ring: 134 65% 40%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    --garden-green: 142 76% 36%;
+    --garden-white: 0 0% 99%;
   }
 
   .dark {
-    --background: 120 10% 10%;
-    --foreground: 120 10% 95%;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
 
-    --card: 120 10% 12%;
-    --card-foreground: 120 10% 95%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 120 10% 12%;
-    --popover-foreground: 120 10% 95%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 134 50% 40%;
-    --primary-foreground: 120 10% 95%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
 
-    --secondary: 134 15% 15%;
-    --secondary-foreground: 120 10% 95%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 134 15% 15%;
-    --muted-foreground: 120 10% 70%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 134 15% 15%;
-    --accent-foreground: 120 10% 95%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 120 10% 95%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 134 15% 25%;
-    --input: 134 15% 25%;
-    --ring: 134 50% 40%;
-
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
   }
 }
 
@@ -91,52 +74,34 @@
   * {
     @apply border-border;
   }
-
   body {
-    @apply bg-background text-foreground font-sans;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-sans font-semibold;
-  }
-
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-muted rounded-full;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-primary/50 rounded-full hover:bg-primary/70 transition-colors;
+    @apply bg-background text-foreground;
   }
 }
 
 @layer components {
   .section-container {
-    @apply container mx-auto py-10 px-4 md:px-6 animate-fade-in;
+    @apply py-16 px-4 container mx-auto;
   }
   
   .section-title {
-    @apply text-3xl md:text-4xl font-bold mb-6 text-center text-garden-green;
+    @apply text-3xl font-bold text-center text-garden-green mb-4;
   }
   
   .card-grid {
-    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6;
   }
   
   .garden-card {
-    @apply bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg;
+    @apply flex flex-col h-full overflow-hidden;
+  }
+  
+  .garden-card-link {
+    @apply flex flex-col h-full text-inherit no-underline;
   }
   
   .garden-card-image {
-    @apply w-full h-48 object-cover;
-  }
-  
-  .garden-card-content {
-    @apply p-4;
+    @apply w-full h-full object-cover transition-transform hover:scale-110 duration-500;
   }
   
   .garden-card-title {
@@ -145,21 +110,5 @@
   
   .garden-card-description {
     @apply text-gray-600;
-  }
-  
-  .ticker-container {
-    @apply bg-garden-green text-garden-white fixed top-0 left-0 w-full py-1 overflow-hidden z-50;
-  }
-  
-  .ticker-content {
-    @apply inline-block whitespace-nowrap animate-ticker;
-  }
-  
-  .visitor-counter {
-    @apply fixed top-4 right-4 bg-garden-white text-garden-green rounded-full px-3 py-1 shadow-md text-sm font-semibold z-50;
-  }
-  
-  .active-nav-link {
-    @apply text-garden-green border-b-2 border-garden-green;
   }
 }

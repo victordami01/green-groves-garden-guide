@@ -5,6 +5,7 @@ import { fetchGardenData } from '@/utils/dataService';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const TipsSection = () => {
   const { data, isLoading } = useQuery({
@@ -18,6 +19,21 @@ const TipsSection = () => {
 
   const toggleShowMore = () => {
     setShowMore(!showMore);
+  };
+
+  // Garden tip specific images
+  const getTipImage = (imageUrl: string, index: number) => {
+    if (!imageUrl) return '';
+    
+    const tipImages = [
+      'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2',
+      'https://images.unsplash.com/photo-1622383563227-04401ab4e5ea',
+      'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735',
+      'https://images.unsplash.com/photo-1561454304-e1aaddabd1ef',
+      'https://images.unsplash.com/photo-1557708962-8828085a2c48'
+    ];
+    
+    return tipImages[index % tipImages.length];
   };
 
   return (
@@ -42,19 +58,26 @@ const TipsSection = () => {
       ) : (
         <div className="card-grid">
           {displayedTips.map((tip, index) => (
-            <Card key={index} className="overflow-hidden">
-              <div className="relative h-48">
-                <img
-                  src={tip.image}
-                  alt={tip.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <CardHeader>
-                <CardTitle className="text-garden-green">{tip.title}</CardTitle>
-                <CardDescription>{tip.description}</CardDescription>
-              </CardHeader>
-            </Card>
+            <Link to={`/tips/${index}`} key={index} className="garden-card-link">
+              <Card key={index} className="overflow-hidden transition-transform hover:scale-[1.02]">
+                <div className="relative h-48">
+                  <img
+                    src={getTipImage(tip.image, index)}
+                    alt={tip.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <CardHeader>
+                  <CardTitle className="text-garden-green">{tip.title}</CardTitle>
+                  <CardDescription>{tip.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Button variant="outline" className="w-full text-garden-green border-garden-green hover:bg-garden-green/10">
+                    Read More
+                  </Button>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
       )}
