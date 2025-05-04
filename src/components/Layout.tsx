@@ -6,6 +6,7 @@ import VisitorCounter from './VisitorCounter';
 import SearchResults from './SearchResults';
 import { searchGardenData, ItemType } from '@/utils/dataService';
 import { Leaf } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface LayoutProps {
   children: ReactNode;
@@ -34,48 +35,71 @@ const Layout = ({ children }: LayoutProps) => {
       <Ticker />
       <VisitorCounter />
       
-      <div className="pt-8">
+      <div className="pt-4">
         <Navbar onSearch={handleSearch} />
         <main>{children}</main>
         
         <footer className="bg-garden-green text-white py-10 mt-16">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row justify-between items-center md:items-start">
-              <div className="mb-6 md:mb-0">
-                <div className="flex items-center">
-                  <Leaf className="h-6 w-6 mr-2" />
-                  <span className="text-xl font-bold">Green Groves</span>
-                </div>
-                <p className="mt-2 max-w-xs text-garden-white/80">
-                  Your ultimate guide to small-scale gardening in balconies, terraces, and home gardens.
-                </p>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mb-8">
+              <div>
+                <h3 className="font-semibold mb-3">Home</h3>
+                <ul className="space-y-2 text-sm">
+                  <li><Link to="/#home" className="hover:underline">Home</Link></li>
+                  <li><Link to="/#about" className="hover:underline">About</Link></li>
+                  <li><Link to="/#contact" className="hover:underline">Contact Us</Link></li>
+                </ul>
               </div>
               
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
-                <div>
-                  <h3 className="font-semibold mb-3">Quick Links</h3>
-                  <ul className="space-y-2">
-                    <li><a href="#home" className="hover:underline">Home</a></li>
-                    <li><a href="#tips" className="hover:underline">Gardening Tips</a></li>
-                    <li><a href="#tools" className="hover:underline">Tools</a></li>
-                    <li><a href="#about" className="hover:underline">About</a></li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h3 className="font-semibold mb-3">Resources</h3>
-                  <ul className="space-y-2">
-                    <li><a href="#books" className="hover:underline">Books</a></li>
-                    <li><a href="#videos" className="hover:underline">Videos</a></li>
-                    <li><a href="#contact" className="hover:underline">Contact</a></li>
-                  </ul>
-                </div>
+              <div>
+                <h3 className="font-semibold mb-3">Gardening Tips</h3>
+                <ul className="space-y-2 text-sm">
+                  <li><Link to="/#tips" className="hover:underline">All Tips</Link></li>
+                  <li><Link to="/#tools" className="hover:underline">Seasonal Guide</Link></li>
+                  <li><Link to="/#tools" className="hover:underline">Plant Care</Link></li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 className="font-semibold mb-3">Tools</h3>
+                <ul className="space-y-2 text-sm">
+                  <li><Link to="/tools" className="hover:underline">All Tools</Link></li>
+                  <li><Link to="/tools" className="hover:underline">Gardening Tools</Link></li>
+                  <li><Link to="/tools" className="hover:underline">Accessories</Link></li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 className="font-semibold mb-3">Essentials</h3>
+                <ul className="space-y-2 text-sm">
+                  <li><Link to="/books" className="hover:underline">Books</Link></li>
+                  <li><Link to="/videos" className="hover:underline">Videos</Link></li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 className="font-semibold mb-3">Pots & Containers</h3>
+                <ul className="space-y-2 text-sm">
+                  <li><Link to="/tools" className="hover:underline">Indoor Pots</Link></li>
+                  <li><Link to="/tools" className="hover:underline">Outdoor Planters</Link></li>
+                </ul>
               </div>
             </div>
             
-            <div className="mt-10 pt-6 border-t border-garden-white/20 text-center md:text-left">
+            <div className="flex justify-center space-x-5 my-6">
+              {['instagram', 'facebook', 'twitter', 'pinterest', 'youtube'].map(social => (
+                <a href={`#${social}`} key={social} className="text-white hover:text-garden-white/70">
+                  <span className="sr-only">{social}</span>
+                  <div className="w-6 h-6 border border-white/40 rounded-full flex items-center justify-center">
+                    <span className="text-xs">{social[0].toUpperCase()}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+            
+            <div className="mt-8 pt-6 border-t border-garden-white/20 text-center text-sm">
               <p>© {new Date().getFullYear()} Green Groves. All rights reserved.</p>
-              <p className="text-sm text-garden-white/70 mt-1">
+              <p className="text-garden-white/70 mt-1">
                 Project created by Dami, Samuel, Ella, and Idowu
               </p>
             </div>

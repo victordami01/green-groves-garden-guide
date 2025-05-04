@@ -18,8 +18,8 @@ const VisitorCounter = () => {
   }, []);
 
   return (
-    <div className="visitor-counter">
-      <span>Visitors: {visitorCount}</span>
+    <div className="visitor-counter bg-garden-white border-b border-gray-200 py-1 px-4 text-right text-sm text-gray-600">
+      <span>👥 Visitors today: {visitorCount}</span>
     </div>
   );
 };

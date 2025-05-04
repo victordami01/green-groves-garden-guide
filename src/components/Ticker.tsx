@@ -60,15 +60,25 @@ const Ticker = () => {
   }, []);
 
   return (
-    <div className="ticker-container">
-      <div className="ticker-content">
-        <span className="px-4">{currentDate}</span>
-        <span className="px-4">|</span>
-        <span className="px-4">{currentTime}</span>
-        <span className="px-4">|</span>
-        <span className="px-4">{location}</span>
-        <span className="px-4">|</span>
-        <span className="px-4">Welcome to Green Groves - Your Ultimate Guide to Small-Scale Gardening!</span>
+    <div className="bg-garden-green/95 text-white overflow-hidden py-2 relative">
+      <div className="marquee-container w-full overflow-hidden">
+        <div className="animate-ticker flex whitespace-nowrap">
+          <span className="px-4">{currentDate}</span>
+          <span className="px-4">|</span>
+          <span className="px-4">{currentTime}</span>
+          <span className="px-4">|</span>
+          <span className="px-4">{location}</span>
+          <span className="px-4">|</span>
+          <span className="px-4">Welcome to Green Groves - Your Ultimate Guide to Small-Scale Gardening!</span>
+          <span className="px-4">|</span>
+          <span className="px-4">{currentDate}</span>
+          <span className="px-4">|</span>
+          <span className="px-4">{currentTime}</span>
+          <span className="px-4">|</span>
+          <span className="px-4">{location}</span>
+          <span className="px-4">|</span>
+          <span className="px-4">Welcome to Green Groves - Your Ultimate Guide to Small-Scale Gardening!</span>
+        </div>
       </div>
     </div>
   );
