@@ -1,5 +1,13 @@
 
-const VideosSection = () => {
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+
+interface VideosSectionProps {
+  fullPage?: boolean;
+}
+
+const VideosSection = ({ fullPage = false }: VideosSectionProps) => {
   // Actual gardening videos from YouTube
   const videos = [
     {
@@ -21,8 +29,31 @@ const VideosSection = () => {
       id: "ryISVpLEuGE",
       title: "Vertical Garden Ideas for Small Spaces",
       description: "Creative solutions for growing upward when horizontal space is limited in urban environments."
+    },
+    {
+      id: "uhg8kecqapk",
+      title: "DIY Self-Watering Containers",
+      description: "Create your own self-watering containers to ensure your plants stay hydrated, even when you're away."
+    },
+    {
+      id: "Xmx0Qh1XF9w",
+      title: "Composting for Small Spaces",
+      description: "Learn how to compost kitchen scraps even in the tiniest urban spaces using innovative methods."
+    },
+    {
+      id: "o1QXCcQgofg",
+      title: "Propagating Houseplants",
+      description: "Double your plant collection for free by learning how to propagate common houseplants from cuttings."
+    },
+    {
+      id: "LZhnCxG7Ehc",
+      title: "Pest Control for Indoor Gardens",
+      description: "Natural and effective ways to combat common pests that can damage your indoor plants."
     }
   ];
+
+  // Show all videos on full page, otherwise just the first 4
+  const displayedVideos = fullPage ? videos : videos.slice(0, 4);
 
   return (
     <section id="videos" className="section-container">
@@ -32,7 +63,7 @@ const VideosSection = () => {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {videos.map((video, index) => (
+        {displayedVideos.map((video, index) => (
           <div key={index} className="bg-white rounded-lg overflow-hidden shadow-md">
             <div className="aspect-video">
               <iframe 
@@ -53,6 +84,16 @@ const VideosSection = () => {
           </div>
         ))}
       </div>
+
+      {!fullPage && (
+        <div className="flex justify-center mt-8">
+          <Link to="/videos">
+            <Button className="bg-garden-green hover:bg-garden-green/90">
+              Show More Videos
+            </Button>
+          </Link>
+        </div>
+      )}
     </section>
   );
 };

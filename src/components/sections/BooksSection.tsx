@@ -4,14 +4,20 @@ import { fetchGardenData } from '@/utils/dataService';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Book } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-const BooksSection = () => {
+interface BooksSectionProps {
+  fullPage?: boolean;
+}
+
+const BooksSection = ({ fullPage = false }: BooksSectionProps) => {
   const { data, isLoading } = useQuery({
     queryKey: ['gardenData'],
     queryFn: fetchGardenData,
   });
 
   const books = data?.books || [];
+  const displayedBooks = fullPage ? books : books.slice(0, 4);
 
   return (
     <section id="books" className="section-container">
@@ -28,7 +34,7 @@ const BooksSection = () => {
         </div>
       ) : (
         <div className="card-grid">
-          {books.map((book, index) => (
+          {displayedBooks.map((book, index) => (
             <Card key={index} className="garden-card">
               <div className="h-48 overflow-hidden">
                 <img 
@@ -46,6 +52,16 @@ const BooksSection = () => {
               </CardContent>
             </Card>
           ))}
+        </div>
+      )}
+
+      {!fullPage && books.length > 4 && (
+        <div className="flex justify-center mt-8">
+          <Link to="/books">
+            <Button className="bg-garden-green hover:bg-garden-green/90">
+              Show More Books
+            </Button>
+          </Link>
         </div>
       )}
     </section>

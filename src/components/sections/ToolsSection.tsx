@@ -1,14 +1,27 @@
+
 import { useQuery } from '@tanstack/react-query';
 import { fetchGardenData } from '@/utils/dataService';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Shovel } from 'lucide-react';
+import { Tool } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
-const ToolsSection = () => {
+interface ToolsSectionProps {
+  fullPage?: boolean;
+}
+
+const ToolsSection = ({ fullPage = false }: ToolsSectionProps) => {
   const { data, isLoading } = useQuery({
     queryKey: ['gardenData'],
     queryFn: fetchGardenData,
   });
+
+  // Function to slice data based on whether we're on full page or home page
+  const getDisplayedItems = (items: any[]) => {
+    if (!items) return [];
+    return fullPage ? items : items.slice(0, 4);
+  };
 
   return (
     <section id="tools" className="section-container">
@@ -35,7 +48,7 @@ const ToolsSection = () => {
             </div>
           ) : (
             <div className="card-grid">
-              {data?.tools.map((tool, index) => (
+              {getDisplayedItems(data?.tools).map((tool, index) => (
                 <Card key={index} className="garden-card">
                   <div className="h-48 overflow-hidden">
                     <img 
@@ -64,7 +77,7 @@ const ToolsSection = () => {
             </div>
           ) : (
             <div className="card-grid">
-              {data?.essentials.map((essential, index) => (
+              {getDisplayedItems(data?.essentials).map((essential, index) => (
                 <Card key={index} className="garden-card">
                   <div className="h-48 overflow-hidden">
                     <img 
@@ -93,7 +106,7 @@ const ToolsSection = () => {
             </div>
           ) : (
             <div className="card-grid">
-              {data?.pots.map((pot, index) => (
+              {getDisplayedItems(data?.pots).map((pot, index) => (
                 <Card key={index} className="garden-card">
                   <div className="h-48 overflow-hidden">
                     <img 
@@ -122,7 +135,7 @@ const ToolsSection = () => {
             </div>
           ) : (
             <div className="card-grid">
-              {data?.accessories.map((accessory, index) => (
+              {getDisplayedItems(data?.accessories).map((accessory, index) => (
                 <Card key={index} className="garden-card">
                   <div className="h-48 overflow-hidden">
                     <img 
@@ -141,6 +154,16 @@ const ToolsSection = () => {
           )}
         </TabsContent>
       </Tabs>
+
+      {!fullPage && (
+        <div className="flex justify-center mt-8">
+          <Link to="/tools">
+            <Button className="bg-garden-green hover:bg-garden-green/90">
+              Show All Tools & Essentials
+            </Button>
+          </Link>
+        </div>
+      )}
     </section>
   );
 };

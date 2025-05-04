@@ -9,6 +9,7 @@ import {
   DropdownMenuItem, 
   DropdownMenuTrigger 
 } from '@/components/ui/dropdown-menu';
+import { Link } from 'react-router-dom';
 
 interface NavbarProps {
   onSearch: (query: string) => void;
@@ -28,17 +29,17 @@ const Navbar = ({ onSearch }: NavbarProps) => {
     },
     { 
       name: 'Tools & Essentials', 
-      href: '#tools',
+      href: '/tools',
       submenu: true,
       items: [
-        { name: 'Tools', href: '#tools' },
-        { name: 'Essentials', href: '#essentials' },
-        { name: 'Pots & Containers', href: '#pots' },
-        { name: 'Accessories', href: '#accessories' }
+        { name: 'Tools', href: '/tools' },
+        { name: 'Essentials', href: '/tools?tab=essentials' },
+        { name: 'Pots & Containers', href: '/tools?tab=pots' },
+        { name: 'Accessories', href: '/tools?tab=accessories' }
       ]
     },
-    { name: 'Videos', href: '#videos' },
-    { name: 'Books', href: '#books' },
+    { name: 'Videos', href: '/videos' },
+    { name: 'Books', href: '/books' },
     { name: 'About', href: '#about' },
     { name: 'Contact', href: '#contact' }
   ];
@@ -63,6 +64,10 @@ const Navbar = ({ onSearch }: NavbarProps) => {
     onSearch(searchQuery);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <nav 
       className={`sticky top-8 z-40 w-full transition-all duration-300 ${
@@ -72,10 +77,10 @@ const Navbar = ({ onSearch }: NavbarProps) => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <a href="#home" className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2">
             <Leaf className="h-6 w-6 text-garden-green" />
             <span className="text-xl font-bold text-garden-green">Green Groves</span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-6">
@@ -93,24 +98,24 @@ const Navbar = ({ onSearch }: NavbarProps) => {
                   <DropdownMenuContent align="end" className="w-40 bg-white">
                     {link.items?.map((item) => (
                       <DropdownMenuItem key={item.name} asChild>
-                        <a 
-                          href={item.href} 
-                          className="cursor-pointer hover:text-garden-green"
+                        <Link 
+                          to={item.href} 
+                          className="cursor-pointer hover:text-garden-green w-full"
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       </DropdownMenuItem>
                     ))}
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                <a 
+                <Link 
                   key={link.name} 
-                  href={link.href}
+                  to={link.href}
                   className="text-foreground hover:text-garden-green transition-colors"
                 >
                   {link.name}
-                </a>
+                </Link>
               )
             ))}
           </div>
@@ -175,25 +180,25 @@ const Navbar = ({ onSearch }: NavbarProps) => {
                       <div className="font-medium text-garden-green">{link.name}</div>
                       <div className="ml-4 flex flex-col space-y-2">
                         {link.items?.map((item) => (
-                          <a 
+                          <Link 
                             key={item.name} 
-                            href={item.href}
+                            to={item.href}
                             className="text-foreground hover:text-garden-green"
-                            onClick={() => setIsMenuOpen(false)}
+                            onClick={closeMenu}
                           >
                             {item.name}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </div>
                   ) : (
-                    <a 
-                      href={link.href}
+                    <Link 
+                      to={link.href}
                       className="text-foreground hover:text-garden-green font-medium"
-                      onClick={() => setIsMenuOpen(false)}
+                      onClick={closeMenu}
                     >
                       {link.name}
-                    </a>
+                    </Link>
                   )}
                 </div>
               ))}

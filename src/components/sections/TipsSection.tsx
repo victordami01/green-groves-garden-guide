@@ -1,7 +1,10 @@
 
+import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchGardenData } from '@/utils/dataService';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const TipsSection = () => {
   const { data, isLoading } = useQuery({
@@ -9,7 +12,13 @@ const TipsSection = () => {
     queryFn: fetchGardenData,
   });
 
+  const [showMore, setShowMore] = useState(false);
   const tips = data?.tips || [];
+  const displayedTips = showMore ? tips : tips.slice(0, 4);
+
+  const toggleShowMore = () => {
+    setShowMore(!showMore);
+  };
 
   return (
     <section id="tips" className="section-container">
@@ -32,7 +41,7 @@ const TipsSection = () => {
         </div>
       ) : (
         <div className="card-grid">
-          {tips.map((tip, index) => (
+          {displayedTips.map((tip, index) => (
             <Card key={index} className="overflow-hidden">
               <div className="relative h-48">
                 <img
@@ -47,6 +56,21 @@ const TipsSection = () => {
               </CardHeader>
             </Card>
           ))}
+        </div>
+      )}
+
+      {tips.length > 4 && (
+        <div className="flex justify-center mt-8">
+          <Button 
+            onClick={toggleShowMore}
+            className="flex items-center gap-2 bg-garden-green hover:bg-garden-green/90"
+          >
+            {showMore ? (
+              <>Show Less <ChevronUp className="h-4 w-4" /></>
+            ) : (
+              <>Show More <ChevronDown className="h-4 w-4" /></>
+            )}
+          </Button>
         </div>
       )}
 
