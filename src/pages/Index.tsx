@@ -1,13 +1,47 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { useEffect } from 'react';
+import Layout from '@/components/Layout';
+import HomeSection from '@/components/sections/HomeSection';
+import TipsSection from '@/components/sections/TipsSection';
+import ToolsSection from '@/components/sections/ToolsSection';
+import VideosSection from '@/components/sections/VideosSection';
+import BooksSection from '@/components/sections/BooksSection';
+import AboutSection from '@/components/sections/AboutSection';
+import ContactSection from '@/components/sections/ContactSection';
 
 const Index = () => {
+  useEffect(() => {
+    // Handle hash-based navigation for the SPA
+    const handleHashChange = () => {
+      const hash = window.location.hash || '#home';
+      const element = document.querySelector(hash);
+      
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+    
+    // Set up event listener for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+    
+    // Handle initial load
+    setTimeout(handleHashChange, 100);
+    
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
+  
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <Layout>
+      <HomeSection />
+      <TipsSection />
+      <ToolsSection />
+      <VideosSection />
+      <BooksSection />
+      <AboutSection />
+      <ContactSection />
+    </Layout>
   );
 };
 

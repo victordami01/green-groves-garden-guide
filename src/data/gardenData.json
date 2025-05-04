@@ -1,0 +1,100 @@
+
+{
+  "inspiration": [
+    {
+      "title": "Tranquil Pondside Garden",
+      "image": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07"
+    },
+    {
+      "title": "Cozy Bench in the Garden",
+      "image": "https://images.unsplash.com/photo-1518495973542-4542c06a5843"
+    }
+  ],
+  "tips": [
+    {
+      "title": "How to Plant a Window Box",
+      "description": "Window boxes add charm to any home. With the right plants and proper care, you can create a stunning display that lasts all season long.",
+      "image": "https://images.unsplash.com/photo-1518495973542-4542c06a5843"
+    },
+    {
+      "title": "Choosing the Right Soil",
+      "description": "Soil is the foundation of a healthy garden. Learn how to select the best soil for your plants.",
+      "image": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07"
+    }
+  ],
+  "products": [
+    {
+      "title": "Gardening Gloves",
+      "description": "Protect your hands while gardening with these durable gloves.",
+      "image": "https://images.unsplash.com/photo-1518495973542-4542c06a5843"
+    },
+    {
+      "title": "Trowel and Pruner Set",
+      "description": "This set includes a trowel and pruner for planting, weeding, and pruning.",
+      "image": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07"
+    }
+  ],
+  "tools": [
+    {
+      "title": "Trowel",
+      "description": "Small hand tool for digging and planting.",
+      "image": "https://images.unsplash.com/photo-1518495973542-4542c06a5843"
+    },
+    {
+      "title": "Garden Pruner",
+      "description": "Essential tool for trimming plants and harvesting.",
+      "image": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07"
+    }
+  ],
+  "essentials": [
+    {
+      "title": "Potting Soil",
+      "description": "Nutrient-rich soil for small gardens.",
+      "image": "https://images.unsplash.com/photo-1518495973542-4542c06a5843"
+    },
+    {
+      "title": "Organic Fertilizer",
+      "description": "Natural fertilizer for healthy plant growth.",
+      "image": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07"
+    }
+  ],
+  "pots": [
+    {
+      "title": "Ceramic Pot",
+      "description": "Durable pot for indoor plants.",
+      "image": "https://images.unsplash.com/photo-1518495973542-4542c06a5843"
+    },
+    {
+      "title": "Terracotta Container",
+      "description": "Classic container that provides good airflow to plant roots.",
+      "image": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07"
+    }
+  ],
+  "accessories": [
+    {
+      "title": "Decorative Pebbles",
+      "description": "Add beauty to your garden with colorful pebbles.",
+      "image": "https://images.unsplash.com/photo-1518495973542-4542c06a5843"
+    },
+    {
+      "title": "Mini Garden Figures",
+      "description": "Cute decorative elements to personalize your garden space.",
+      "image": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07"
+    }
+  ],
+  "books": [
+    {
+      "title": "Gardening 101",
+      "description": "A beginner's guide to gardening.",
+      "image": "https://images.unsplash.com/photo-1518495973542-4542c06a5843"
+    },
+    {
+      "title": "Small Space Gardening",
+      "description": "Learn how to make the most of limited gardening space.",
+      "image": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07"
+    }
+  ],
+  "about": {
+    "description": "Green Groves is dedicated to helping gardening enthusiasts grow beautiful plants with ease. Our team of experts provides guidance on creating stunning gardens in limited spaces like balconies, terraces, and small yards. Founded in 2025, we're committed to spreading the joy of gardening to urban dwellers and apartment residents worldwide."
+  }
+}
