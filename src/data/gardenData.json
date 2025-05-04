@@ -2,96 +2,160 @@
 {
   "inspiration": [
     {
-      "title": "Tranquil Pondside Garden",
+      "title": "Tranquil Balcony Garden",
       "image": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07"
     },
     {
-      "title": "Cozy Bench in the Garden",
+      "title": "Urban Terrace Oasis",
       "image": "https://images.unsplash.com/photo-1518495973542-4542c06a5843"
+    },
+    {
+      "title": "Vertical Garden Wall",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb"
     }
   ],
   "tips": [
     {
-      "title": "How to Plant a Window Box",
-      "description": "Window boxes add charm to any home. With the right plants and proper care, you can create a stunning display that lasts all season long.",
-      "image": "https://images.unsplash.com/photo-1518495973542-4542c06a5843"
+      "title": "Container Gardening Essentials",
+      "description": "Choose containers with drainage holes, use quality potting soil, and select plants based on your available sunlight. Water consistently but don't overwater.",
+      "image": "https://images.unsplash.com/photo-1582562124811-c09040d0a901"
     },
     {
-      "title": "Choosing the Right Soil",
-      "description": "Soil is the foundation of a healthy garden. Learn how to select the best soil for your plants.",
+      "title": "Vertical Gardening for Small Spaces",
+      "description": "Maximize your space by growing upward using trellises, wall planters, or hanging baskets. Perfect for vining plants like beans, peas, and cascading flowers.",
+      "image": "https://images.unsplash.com/photo-1472396961693-142e6e269027"
+    },
+    {
+      "title": "Indoor Herb Garden Guide",
+      "description": "Place herbs near a south-facing window for 6-8 hours of sunlight daily. Basil, mint, parsley, and chives are perfect starter herbs that thrive indoors.",
+      "image": "https://images.unsplash.com/photo-1517022812141-23620dba5c23"
+    },
+    {
+      "title": "Watering Best Practices",
+      "description": "Water deeply but less frequently to encourage strong root growth. Morning watering reduces evaporation and fungal diseases. Consider a drip irrigation system.",
       "image": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07"
     }
   ],
   "products": [
     {
       "title": "Gardening Gloves",
-      "description": "Protect your hands while gardening with these durable gloves.",
+      "description": "Breathable fabric with rubber-coated palms for protection and dexterity while working with soil and plants.",
       "image": "https://images.unsplash.com/photo-1518495973542-4542c06a5843"
     },
     {
-      "title": "Trowel and Pruner Set",
-      "description": "This set includes a trowel and pruner for planting, weeding, and pruning.",
+      "title": "Garden Tool Set",
+      "description": "5-piece essential tool set including trowel, pruners, cultivator, weeder, and transplanter for all your gardening needs.",
       "image": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07"
     }
   ],
   "tools": [
     {
-      "title": "Trowel",
-      "description": "Small hand tool for digging and planting.",
+      "title": "Hand Trowel",
+      "description": "Essential for digging small holes, transferring seedlings, and mixing soil in containers. Look for ergonomic handles and rust-resistant materials.",
       "image": "https://images.unsplash.com/photo-1518495973542-4542c06a5843"
     },
     {
-      "title": "Garden Pruner",
-      "description": "Essential tool for trimming plants and harvesting.",
+      "title": "Pruning Shears",
+      "description": "Perfect for trimming stems, deadheading flowers, and harvesting herbs and vegetables in small gardens and containers.",
       "image": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07"
+    },
+    {
+      "title": "Hand Cultivator",
+      "description": "Three-pronged tool for loosening soil, removing weeds, and aerating around plants without damaging roots.",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb"
+    },
+    {
+      "title": "Watering Can",
+      "description": "Long-spout design for precise watering of container plants and hanging baskets without splashing or soil disturbance.",
+      "image": "https://images.unsplash.com/photo-1582562124811-c09040d0a901"
     }
   ],
   "essentials": [
     {
-      "title": "Potting Soil",
-      "description": "Nutrient-rich soil for small gardens.",
+      "title": "Container Potting Mix",
+      "description": "Lightweight, well-draining soil blend with perlite and vermiculite, specifically formulated for container gardening.",
       "image": "https://images.unsplash.com/photo-1518495973542-4542c06a5843"
     },
     {
-      "title": "Organic Fertilizer",
-      "description": "Natural fertilizer for healthy plant growth.",
+      "title": "Organic Plant Food",
+      "description": "Slow-release granular fertilizer with balanced NPK ratio for continuous feeding of container plants for up to 3 months.",
       "image": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07"
+    },
+    {
+      "title": "Moisture Meter",
+      "description": "Simple probe tool to test soil moisture levels, preventing both overwatering and underwatering of container plants.",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb"
+    },
+    {
+      "title": "Neem Oil Spray",
+      "description": "Natural, organic solution for controlling common pests and fungal issues in small gardens without harsh chemicals.",
+      "image": "https://images.unsplash.com/photo-1472396961693-142e6e269027"
     }
   ],
   "pots": [
     {
-      "title": "Ceramic Pot",
-      "description": "Durable pot for indoor plants.",
+      "title": "Self-Watering Planters",
+      "description": "Modern containers with water reservoirs that provide consistent moisture for plants, perfect for busy gardeners.",
       "image": "https://images.unsplash.com/photo-1518495973542-4542c06a5843"
     },
     {
-      "title": "Terracotta Container",
-      "description": "Classic container that provides good airflow to plant roots.",
+      "title": "Hanging Baskets",
+      "description": "Coconut coir-lined baskets for cascading flowers and trailing herbs, maximizing vertical space on balconies and patios.",
       "image": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07"
+    },
+    {
+      "title": "Window Box Planters",
+      "description": "Durable plastic with UV protection, perfect for herbs and small flowering plants on windowsills and railings.",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb"
+    },
+    {
+      "title": "Vertical Wall Planters",
+      "description": "Modular fabric pocket system for creating living walls in small spaces, suitable for herbs and succulents.",
+      "image": "https://images.unsplash.com/photo-1517022812141-23620dba5c23"
     }
   ],
   "accessories": [
     {
-      "title": "Decorative Pebbles",
-      "description": "Add beauty to your garden with colorful pebbles.",
+      "title": "Decorative River Rocks",
+      "description": "Polished stones for topping containers to reduce soil splashing, retain moisture, and add visual interest.",
       "image": "https://images.unsplash.com/photo-1518495973542-4542c06a5843"
     },
     {
-      "title": "Mini Garden Figures",
-      "description": "Cute decorative elements to personalize your garden space.",
+      "title": "Plant Markers",
+      "description": "Weather-resistant bamboo labels for identifying herbs, vegetables, and flowers in your container garden.",
       "image": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07"
+    },
+    {
+      "title": "Fairy Garden Accessories",
+      "description": "Miniature benches, houses, and figurines to create enchanting small-scale gardens in containers.",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb"
+    },
+    {
+      "title": "Solar Garden Lights",
+      "description": "Stake-mounted LED lights that charge during the day and illuminate your garden space at night.",
+      "image": "https://images.unsplash.com/photo-1582562124811-c09040d0a901"
     }
   ],
   "books": [
     {
-      "title": "Gardening 101",
-      "description": "A beginner's guide to gardening.",
+      "title": "Container Gardening Complete",
+      "description": "Comprehensive guide to growing flowers, vegetables, herbs, and fruits in containers, with plans for different spaces and seasons.",
       "image": "https://images.unsplash.com/photo-1518495973542-4542c06a5843"
     },
     {
-      "title": "Small Space Gardening",
-      "description": "Learn how to make the most of limited gardening space.",
+      "title": "Vertical Gardening: Grow Up, Not Out",
+      "description": "Solutions for small-space gardeners to maximize yields and beauty by utilizing vertical space on balconies, patios, and urban settings.",
       "image": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07"
+    },
+    {
+      "title": "The Year-Round Urban Grower",
+      "description": "Month-by-month planner for continuous harvests from small spaces, with focus on succession planting and season extension techniques.",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb"
+    },
+    {
+      "title": "Small Space, Big Harvest",
+      "description": "Practical methods for growing substantial amounts of food in containers and small garden beds using intensive gardening techniques.",
+      "image": "https://images.unsplash.com/photo-1517022812141-23620dba5c23"
     }
   ],
   "about": {

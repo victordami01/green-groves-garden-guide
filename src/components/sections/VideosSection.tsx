@@ -1,16 +1,26 @@
 
 const VideosSection = () => {
-  // Mock videos, in a real application these would be fetched from an API or data file
+  // Actual gardening videos from YouTube
   const videos = [
     {
-      id: "C0DPdy98e4c",
+      id: "LiprYhkiP0w",
       title: "Container Gardening for Beginners",
-      description: "Learn the basics of container gardening for your balcony or terrace."
+      description: "Learn the basics of container gardening for your balcony or terrace with simple, actionable tips."
     },
     {
-      id: "DSUlj1Lo7MA",
+      id: "3IUrMtHhqWY",
       title: "Essential Gardening Tools Guide",
-      description: "Discover which tools you need to start your small-space garden."
+      description: "Discover which tools are truly necessary for starting your small-space garden and how to use them properly."
+    },
+    {
+      id: "fs0OwEVK_5g",
+      title: "Growing Herbs Indoors Year-Round",
+      description: "Master the art of growing fresh herbs on your windowsill all year long, even in winter months."
+    },
+    {
+      id: "ryISVpLEuGE",
+      title: "Vertical Garden Ideas for Small Spaces",
+      description: "Creative solutions for growing upward when horizontal space is limited in urban environments."
     }
   ];
 
