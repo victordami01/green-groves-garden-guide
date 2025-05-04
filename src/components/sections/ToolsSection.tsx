@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchGardenData } from '@/utils/dataService';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Tool } from 'lucide-react';
+import { Shovel } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
