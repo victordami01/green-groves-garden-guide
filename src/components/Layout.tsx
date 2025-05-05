@@ -5,7 +5,7 @@ import Ticker from './Ticker';
 import VisitorCounter from './VisitorCounter';
 import SearchResults from './SearchResults';
 import { searchGardenData, ItemType } from '@/utils/dataService';
-import { Leaf, Facebook, Twitter, Instagram, Linkedin, Mail } from 'lucide-react';
+import { Leaf, Facebook, Twitter, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface LayoutProps {
@@ -44,6 +44,9 @@ const Layout = ({ children }: LayoutProps) => {
     };
   }, []);
 
+  // Get current year for copyright
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className="min-h-screen bg-garden-white">
       <Ticker />
@@ -53,80 +56,99 @@ const Layout = ({ children }: LayoutProps) => {
         <Navbar onSearch={handleSearch} />
         <main>{children}</main>
         
-        <footer className="bg-garden-green text-white py-10 mt-16">
+        <footer className="bg-garden-green text-white pt-16 pb-8 mt-16">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mb-8">
-              <div>
-                <h3 className="font-semibold mb-3">Home</h3>
+            {/* Footer top section with columns */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
+              {/* Company info */}
+              <div className="md:col-span-4">
+                <div className="flex items-center mb-4">
+                  <Leaf className="h-6 w-6 mr-2" />
+                  <h3 className="text-xl font-bold">Green Groves</h3>
+                </div>
+                <p className="text-white/80 mb-5">
+                  Your trusted partner in gardening supplies and resources since 2010. Helping gardeners across Nigeria create beautiful outdoor spaces.
+                </p>
+                <div className="flex space-x-4 mb-6">
+                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" 
+                    className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition-colors" 
+                    aria-label="Facebook">
+                    <Facebook className="w-5 h-5" />
+                  </a>
+                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" 
+                    className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition-colors" 
+                    aria-label="Twitter">
+                    <Twitter className="w-5 h-5" />
+                  </a>
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" 
+                    className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition-colors" 
+                    aria-label="Instagram">
+                    <Instagram className="w-5 h-5" />
+                  </a>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" 
+                    className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition-colors" 
+                    aria-label="LinkedIn">
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+              
+              {/* Quick links */}
+              <div className="md:col-span-2">
+                <h3 className="font-semibold text-lg mb-4 border-b border-white/20 pb-2">Explore</h3>
                 <ul className="space-y-2 text-sm">
-                  <li><Link to="/#home" className="hover:underline">Home</Link></li>
-                  <li><Link to="/#about" className="hover:underline">About</Link></li>
-                  <li><Link to="/#contact" className="hover:underline">Contact Us</Link></li>
+                  <li><Link to="/#home" className="hover:text-white/80 transition-colors inline-block py-1">Home</Link></li>
+                  <li><Link to="/#about" className="hover:text-white/80 transition-colors inline-block py-1">About</Link></li>
+                  <li><Link to="/#contact" className="hover:text-white/80 transition-colors inline-block py-1">Contact Us</Link></li>
                 </ul>
               </div>
               
-              <div>
-                <h3 className="font-semibold mb-3">Gardening Tips</h3>
+              {/* Gardening section */}
+              <div className="md:col-span-2">
+                <h3 className="font-semibold text-lg mb-4 border-b border-white/20 pb-2">Gardening</h3>
                 <ul className="space-y-2 text-sm">
-                  <li><Link to="/#tips" className="hover:underline">All Tips</Link></li>
-                  <li><Link to="/#tools" className="hover:underline">Seasonal Guide</Link></li>
-                  <li><Link to="/#tools" className="hover:underline">Plant Care</Link></li>
+                  <li><Link to="/#tips" className="hover:text-white/80 transition-colors inline-block py-1">All Tips</Link></li>
+                  <li><Link to="/#tools" className="hover:text-white/80 transition-colors inline-block py-1">Seasonal Guide</Link></li>
+                  <li><Link to="/#tools" className="hover:text-white/80 transition-colors inline-block py-1">Plant Care</Link></li>
                 </ul>
               </div>
               
-              <div>
-                <h3 className="font-semibold mb-3">Tools</h3>
+              {/* Tools section */}
+              <div className="md:col-span-2">
+                <h3 className="font-semibold text-lg mb-4 border-b border-white/20 pb-2">Shop</h3>
                 <ul className="space-y-2 text-sm">
-                  <li><Link to="/tools" className="hover:underline">All Tools</Link></li>
-                  <li><Link to="/tools" className="hover:underline">Gardening Tools</Link></li>
-                  <li><Link to="/tools" className="hover:underline">Accessories</Link></li>
+                  <li><Link to="/tools" className="hover:text-white/80 transition-colors inline-block py-1">All Tools</Link></li>
+                  <li><Link to="/tools" className="hover:text-white/80 transition-colors inline-block py-1">Gardening Tools</Link></li>
+                  <li><Link to="/tools" className="hover:text-white/80 transition-colors inline-block py-1">Accessories</Link></li>
+                  <li><Link to="/tools" className="hover:text-white/80 transition-colors inline-block py-1">Plant Pots</Link></li>
                 </ul>
               </div>
               
-              <div>
-                <h3 className="font-semibold mb-3">Essentials</h3>
-                <ul className="space-y-2 text-sm">
-                  <li><Link to="/books" className="hover:underline">Books</Link></li>
-                  <li><Link to="/videos" className="hover:underline">Videos</Link></li>
-                </ul>
-              </div>
-              
-              <div>
-                <h3 className="font-semibold mb-3">Pots & Containers</h3>
-                <ul className="space-y-2 text-sm">
-                  <li><Link to="/tools" className="hover:underline">Indoor Pots</Link></li>
-                  <li><Link to="/tools" className="hover:underline">Outdoor Planters</Link></li>
+              {/* Contact info */}
+              <div className="md:col-span-2">
+                <h3 className="font-semibold text-lg mb-4 border-b border-white/20 pb-2">Contact</h3>
+                <ul className="space-y-3 text-sm">
+                  <li className="flex items-start">
+                    <MapPin className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>15 Adeola Odeku Street, Victoria Island, Lagos</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Phone className="w-4 h-4 mr-2 flex-shrink-0" />
+                    <span>+234 803 456 7890</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Mail className="w-4 h-4 mr-2 flex-shrink-0" />
+                    <span>hello@greengroves.com.ng</span>
+                  </li>
                 </ul>
               </div>
             </div>
             
-            <div className="flex justify-center space-x-5 my-6">
-              <a href="https://instagram.com" className="text-white hover:text-garden-white/70 transition-colors">
-                <span className="sr-only">Instagram</span>
-                <Instagram className="w-6 h-6" />
-              </a>
-              <a href="https://facebook.com" className="text-white hover:text-garden-white/70 transition-colors">
-                <span className="sr-only">Facebook</span>
-                <Facebook className="w-6 h-6" />
-              </a>
-              <a href="https://twitter.com" className="text-white hover:text-garden-white/70 transition-colors">
-                <span className="sr-only">Twitter</span>
-                <Twitter className="w-6 h-6" />
-              </a>
-              <a href="https://linkedin.com" className="text-white hover:text-garden-white/70 transition-colors">
-                <span className="sr-only">LinkedIn</span>
-                <Linkedin className="w-6 h-6" />
-              </a>
-              <a href="mailto:contact@greengroves.com" className="text-white hover:text-garden-white/70 transition-colors">
-                <span className="sr-only">Email</span>
-                <Mail className="w-6 h-6" />
-              </a>
-            </div>
-            
-            <div className="mt-8 pt-6 border-t border-garden-white/20 text-center text-sm">
-              <p>© {new Date().getFullYear()} Green Groves. All rights reserved.</p>
-              <p className="text-garden-white/70 mt-1">
-                Project created by Dami, Samuel, Ella, and Idowu
+            {/* Footer bottom section with copyright */}
+            <div className="pt-6 border-t border-white/20 flex flex-col md:flex-row justify-between items-center text-sm text-white/70">
+              <p>© {currentYear} Green Groves. All rights reserved.</p>
+              <p className="mt-2 md:mt-0">
+                Created by Dami, Samuel, Ella, and Idowu
               </p>
             </div>
           </div>

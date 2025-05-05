@@ -67,7 +67,10 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				garden: {
-					'green': '#28a745',
+					// Updated garden color palette
+					'green': '#1b7d4f', // Updated to a richer green
+					'light-green': '#4ca375',
+					'dark-green': '#145e3c',
 					'white': '#f8fbf8',
 					'soil': '#8B4513',
 					'light-soil': '#A0522D',
@@ -105,14 +108,22 @@ export default {
 					'0%': { opacity: '0', transform: 'translateY(10px)' },
 					'100%': { opacity: '1', transform: 'translateY(0)' }
 				},
+				'scale-in': {
+					'0%': { transform: 'scale(0.95)', opacity: '0' },
+					'100%': { transform: 'scale(1)', opacity: '1' }
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'ticker': 'ticker 20s linear infinite',
 				'fade-in': 'fade-in 0.5s ease-out',
+				'scale-in': 'scale-in 0.3s ease-out',
 			}
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
+	future: {
+		hoverOnlyWhenSupported: true, // Better performance on mobile
+	},
 } satisfies Config;
