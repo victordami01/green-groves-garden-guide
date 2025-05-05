@@ -5,7 +5,7 @@ import Ticker from './Ticker';
 import VisitorCounter from './VisitorCounter';
 import SearchResults from './SearchResults';
 import { searchGardenData, ItemType } from '@/utils/dataService';
-import { Leaf, Facebook, Twitter, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { Leaf, Facebook, Twitter, Instagram, Linkedin, Mail, MapPin, Phone, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface LayoutProps {
@@ -107,7 +107,7 @@ const Layout = ({ children }: LayoutProps) => {
               <div className="md:col-span-2">
                 <h3 className="font-semibold text-lg mb-4 border-b border-white/20 pb-2">Gardening</h3>
                 <ul className="space-y-2 text-sm">
-                  <li><Link to="/#tips" className="hover:text-white/80 transition-colors inline-block py-1">All Tips</Link></li>
+                  <li><Link to="/tips" className="hover:text-white/80 transition-colors inline-block py-1">All Tips</Link></li>
                   <li><Link to="/#tools" className="hover:text-white/80 transition-colors inline-block py-1">Seasonal Guide</Link></li>
                   <li><Link to="/#tools" className="hover:text-white/80 transition-colors inline-block py-1">Plant Care</Link></li>
                 </ul>
@@ -140,6 +140,10 @@ const Layout = ({ children }: LayoutProps) => {
                     <Mail className="w-4 h-4 mr-2 flex-shrink-0" />
                     <span>hello@greengroves.com.ng</span>
                   </li>
+                  <li className="flex items-center">
+                    <Globe className="w-4 h-4 mr-2 flex-shrink-0" />
+                    <span>www.greengroves.com.ng</span>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -148,7 +152,7 @@ const Layout = ({ children }: LayoutProps) => {
             <div className="pt-6 border-t border-white/20 flex flex-col md:flex-row justify-between items-center text-sm text-white/70">
               <p>© {currentYear} Green Groves. All rights reserved.</p>
               <p className="mt-2 md:mt-0">
-                Created by Dami, Samuel, Ella, and Idowu
+                Green Groves - Nigeria's Premier Gardening Resource
               </p>
             </div>
           </div>

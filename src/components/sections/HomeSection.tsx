@@ -113,7 +113,7 @@ const HomeSection = () => {
               />
               <Button 
                 type="submit"
-                className="absolute right-0 top-0 h-12 bg-garden-green hover:bg-garden-green/90 px-6"
+                className="absolute right-0 top-0 h-12 bg-garden-green hover:bg-garden-green/90 px-6 flex items-center justify-center"
               >
                 <Search className="mr-2 h-4 w-4" />
                 Search

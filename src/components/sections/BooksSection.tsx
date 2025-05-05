@@ -3,8 +3,9 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchGardenData } from '@/utils/dataService';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Book } from 'lucide-react';
+import { Book, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 interface BooksSectionProps {
   fullPage?: boolean;
@@ -16,8 +17,19 @@ const BooksSection = ({ fullPage = false }: BooksSectionProps) => {
     queryFn: fetchGardenData,
   });
 
+  const [showAll, setShowAll] = useState(false);
   const books = data?.books || [];
-  const displayedBooks = fullPage ? books : books.slice(0, 4);
+  
+  // Show more books if showAll is true, otherwise show only 4
+  const displayedBooks = fullPage 
+    ? books 
+    : showAll 
+      ? books 
+      : books.slice(0, 4);
+
+  const toggleShowAll = () => {
+    setShowAll(!showAll);
+  };
 
   // Garden book specific images
   const getBookImage = (imageUrl: string, index: number) => {
@@ -42,7 +54,7 @@ const BooksSection = ({ fullPage = false }: BooksSectionProps) => {
 
       {isLoading ? (
         <div className="card-grid">
-          {[...Array(2)].map((_, i) => (
+          {[...Array(4)].map((_, i) => (
             <div key={i} className="animate-pulse bg-muted h-64 rounded-lg"></div>
           ))}
         </div>
@@ -73,9 +85,32 @@ const BooksSection = ({ fullPage = false }: BooksSectionProps) => {
 
       {!fullPage && books.length > 4 && (
         <div className="flex justify-center mt-8">
+          {showAll ? (
+            <Button 
+              onClick={toggleShowAll}
+              className="bg-garden-green hover:bg-garden-green/90 flex items-center space-x-2"
+            >
+              Show Less
+            </Button>
+          ) : (
+            <Button 
+              onClick={toggleShowAll}
+              className="bg-garden-green hover:bg-garden-green/90 flex items-center space-x-2"
+            >
+              Show More Books <ChevronDown className="ml-2 h-4 w-4" />
+            </Button>
+          )}
+        </div>
+      )}
+
+      {!fullPage && (
+        <div className="flex justify-center mt-4">
           <Link to="/books">
-            <Button className="bg-garden-green hover:bg-garden-green/90">
-              Show More Books
+            <Button 
+              variant="outline" 
+              className="mt-4 border-garden-green text-garden-green hover:bg-garden-green/10"
+            >
+              Browse All Books
             </Button>
           </Link>
         </div>

@@ -97,6 +97,17 @@ const TipsSection = () => {
         </div>
       )}
 
+      <div className="flex justify-center">
+        <Link to="/tips">
+          <Button 
+            variant="outline" 
+            className="mt-4 border-garden-green text-garden-green hover:bg-garden-green/10"
+          >
+            Browse All Tips
+          </Button>
+        </Link>
+      </div>
+
       <div className="mt-12 bg-green-50 p-6 rounded-lg border border-garden-green/20">
         <h3 className="text-xl font-semibold mb-4 text-garden-green">Seasonal Gardening Tip</h3>
         <p className="text-gray-700">

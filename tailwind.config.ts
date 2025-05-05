@@ -67,14 +67,14 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				garden: {
-					// Updated garden color palette
-					'green': '#1b7d4f', // Updated to a richer green
-					'light-green': '#4ca375',
-					'dark-green': '#145e3c',
+					// Updated to a more vibrant and fresh green
+					'green': '#2e8b57', // SeaGreen - more balanced and appealing green
+					'light-green': '#66c2a5',
+					'dark-green': '#1a6540',
 					'white': '#f8fbf8',
 					'soil': '#8B4513',
 					'light-soil': '#A0522D',
-					'leaf': '#6B8E23',
+					'leaf': '#8FBC8F', // DarkSeaGreen - softer leaf color
 					'terracotta': '#E2725B',
 				}
 			},

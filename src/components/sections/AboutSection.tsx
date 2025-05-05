@@ -30,7 +30,7 @@ const AboutSection = () => {
               <h3 className="text-xl font-semibold mb-4 text-garden-green">Meet Our Team</h3>
               
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {["Dami", "Samuel", "Ella", "Idowu"].map((member, index) => (
+                {["Moses", "Amina", "Uche", "Precious"].map((member, index) => (
                   <div key={index} className="text-center">
                     <div className="w-20 h-20 mx-auto bg-garden-green/20 rounded-full flex items-center justify-center mb-2">
                       <span className="text-xl font-semibold text-garden-green">{member[0]}</span>
