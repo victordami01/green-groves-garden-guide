@@ -20,8 +20,8 @@ const HomeSection = () => {
       <div className="relative h-[600px] overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src="/lovable-uploads/994dd6cb-cbae-4667-b755-ab3abf4e6db5.png" 
-            alt="Woman in greenhouse" 
+            src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05" 
+            alt="Garden landscape" 
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/40"></div>
