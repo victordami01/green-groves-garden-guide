@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchGardenData } from '@/utils/dataService';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { WateringCan, Trowel, Leaf, Sprout } from 'lucide-react';
+import { Leaf, Sprout } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const HomeSection = () => {
