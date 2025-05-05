@@ -1,11 +1,11 @@
 
-import { ReactNode, useState } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import Ticker from './Ticker';
 import VisitorCounter from './VisitorCounter';
 import SearchResults from './SearchResults';
 import { searchGardenData, ItemType } from '@/utils/dataService';
-import { Leaf } from 'lucide-react';
+import { Leaf, Facebook, Twitter, Instagram, Linkedin, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface LayoutProps {
@@ -29,6 +29,20 @@ const Layout = ({ children }: LayoutProps) => {
   const closeSearchResults = () => {
     setShowResults(false);
   };
+
+  // Listen for search events from HomeSection
+  useEffect(() => {
+    const handleGardenSearch = (event: Event) => {
+      const customEvent = event as CustomEvent;
+      handleSearch(customEvent.detail);
+    };
+
+    window.addEventListener('garden-search', handleGardenSearch);
+    
+    return () => {
+      window.removeEventListener('garden-search', handleGardenSearch);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-garden-white">
@@ -87,14 +101,26 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
             
             <div className="flex justify-center space-x-5 my-6">
-              {['instagram', 'facebook', 'twitter', 'pinterest', 'youtube'].map(social => (
-                <a href={`#${social}`} key={social} className="text-white hover:text-garden-white/70">
-                  <span className="sr-only">{social}</span>
-                  <div className="w-6 h-6 border border-white/40 rounded-full flex items-center justify-center">
-                    <span className="text-xs">{social[0].toUpperCase()}</span>
-                  </div>
-                </a>
-              ))}
+              <a href="https://instagram.com" className="text-white hover:text-garden-white/70 transition-colors">
+                <span className="sr-only">Instagram</span>
+                <Instagram className="w-6 h-6" />
+              </a>
+              <a href="https://facebook.com" className="text-white hover:text-garden-white/70 transition-colors">
+                <span className="sr-only">Facebook</span>
+                <Facebook className="w-6 h-6" />
+              </a>
+              <a href="https://twitter.com" className="text-white hover:text-garden-white/70 transition-colors">
+                <span className="sr-only">Twitter</span>
+                <Twitter className="w-6 h-6" />
+              </a>
+              <a href="https://linkedin.com" className="text-white hover:text-garden-white/70 transition-colors">
+                <span className="sr-only">LinkedIn</span>
+                <Linkedin className="w-6 h-6" />
+              </a>
+              <a href="mailto:contact@greengroves.com" className="text-white hover:text-garden-white/70 transition-colors">
+                <span className="sr-only">Email</span>
+                <Mail className="w-6 h-6" />
+              </a>
             </div>
             
             <div className="mt-8 pt-6 border-t border-garden-white/20 text-center text-sm">

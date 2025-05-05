@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchGardenData } from '@/utils/dataService';
 import { Button } from '@/components/ui/button';
@@ -7,12 +8,22 @@ import { Leaf, Sprout } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const HomeSection = () => {
+  const [searchQuery, setSearchQuery] = useState('');
   const { data, isLoading } = useQuery({
     queryKey: ['gardenData'],
     queryFn: fetchGardenData,
   });
 
   const inspirationImages = data?.inspiration || [];
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      // Dispatch the search event to the parent Layout component
+      const searchEvent = new CustomEvent('garden-search', { detail: searchQuery });
+      window.dispatchEvent(searchEvent);
+    }
+  };
 
   return (
     <section id="home" className="relative">
@@ -35,18 +46,21 @@ const HomeSection = () => {
             Your one-stop location for all gardening supplies and resources
           </p>
           
-          <div className="w-full max-w-md relative">
+          <form onSubmit={handleSearch} className="w-full max-w-md relative">
             <Input 
               type="text" 
               placeholder="Search our store" 
               className="pr-20 h-12 bg-white/95 text-black"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
             <Button 
+              type="submit"
               className="absolute right-0 top-0 h-12 bg-green-500 hover:bg-green-600 px-6"
             >
               Search
             </Button>
-          </div>
+          </form>
         </div>
       </div>
 
@@ -84,11 +98,11 @@ const HomeSection = () => {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {[
-            { title: 'Gardening Gloves', desc: 'Protect your hands with these durable gloves', icon: 'gloves' },
-            { title: 'Trowel and Pruner Set', desc: 'The set includes a trowel, pruner and more', icon: 'trowel' },
-            { title: 'Plant Mister', desc: 'Keep your houseplants happy and moist with this fine mist sprayer', icon: 'sprayer' },
-            { title: 'Macrame Plant Hanger', desc: 'Add a natural touch to your indoor garden with a macrame plant hanger', icon: 'hanger' },
-            { title: 'Soil Moisture Meter', desc: 'Avoid overwatering your plants with this handy tool', icon: 'meter' }
+            { title: 'Gardening Gloves', desc: 'Protect your hands with these durable gloves', image: 'https://images.unsplash.com/photo-1617723569153-2801406373f4' },
+            { title: 'Trowel and Pruner Set', desc: 'The set includes a trowel, pruner and more', image: 'https://images.unsplash.com/photo-1585513849702-2a2f8afd001b' },
+            { title: 'Plant Mister', desc: 'Keep your houseplants happy and moist with this fine mist sprayer', image: 'https://images.unsplash.com/photo-1653830391012-c92f486bbcbb' },
+            { title: 'Macrame Plant Hanger', desc: 'Add a natural touch to your indoor garden with a macrame plant hanger', image: 'https://images.unsplash.com/photo-1615307799867-b9bbc5a90929' },
+            { title: 'Soil Moisture Meter', desc: 'Avoid overwatering your plants with this handy tool', image: 'https://images.unsplash.com/photo-1625179893310-8e419b5b2d60' }
           ].map((product, idx) => (
             <Link 
               to={`/tools/${idx}`} 
@@ -97,7 +111,7 @@ const HomeSection = () => {
             >
               <div className="h-40 overflow-hidden bg-gray-100 flex items-center justify-center">
                 <img 
-                  src={`https://images.unsplash.com/photo-${1590080600367 + idx}-9732ed56eeff`} 
+                  src={product.image}
                   alt={product.title} 
                   className="w-full h-full object-cover"
                 />

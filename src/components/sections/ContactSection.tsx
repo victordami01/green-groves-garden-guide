@@ -93,13 +93,13 @@ const ContactSection = () => {
           <h3 className="text-xl font-semibold mb-4 text-garden-green">Find Us</h3>
           
           <div className="h-[300px] bg-muted rounded-md overflow-hidden">
-            {/* Replace YOUR_API_KEY with a real key in a production environment */}
+            {/* Lagos, Nigeria map */}
             <iframe 
               width="100%" 
               height="100%" 
               frameBorder="0" 
               title="Green Groves Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1839662546846!2d-73.98775788431176!3d40.75803087932757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1699826510053!5m2!1sen!2sus"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.7300224441096!2d3.370861214262226!3d6.4279319259189585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2a9178c143%3A0x6b415bbf32be4c4e!2sLagos%20Island%2C%20Lagos!5e0!3m2!1sen!2sng!4v1713390158801!5m2!1sen!2sng"
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -107,9 +107,9 @@ const ContactSection = () => {
           </div>
           
           <div className="mt-4 space-y-2">
-            <p><strong>Address:</strong> 123 Garden Lane, New York, NY 10001</p>
+            <p><strong>Address:</strong> 123 Herbert Macaulay Way, Yaba, Lagos, Nigeria</p>
             <p><strong>Email:</strong> contact@greengroves.com</p>
-            <p><strong>Phone:</strong> (123) 456-7890</p>
+            <p><strong>Phone:</strong> +234 801 234 5678</p>
           </div>
         </div>
       </div>
