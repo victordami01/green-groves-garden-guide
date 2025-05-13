@@ -31,25 +31,23 @@
 ## 🚧 How to Run Locally
 
  ### Clone the repository
- ### git clone https://github.com/your-username/greengroves.git
+ #### git clone https://github.com/your-username/greengroves.git
 
-# Navigate into the project
-cd greengroves
+### Navigate into the project
+#### cd greengroves
 
-# Install dependencies
-npm install
+### Install dependencies
+#### npm install
 
-# Start the development server
-npm run dev
+### Start the development server
+#### npm run dev
+
 ## 📸 Screenshots
 ![Green Groves UI](https://iili.io/3SfFUyQ.png)
 ![Green Groves UI](https://iili.io/3SfFS8x.png)
 ![Green Groves UI](https://iili.io/3SfFhjS.png)
 
 
-## 🧑‍💻 Author
-Victor Dami – Frontend Developer & Designer
-📬 LinkedIn | 🌐 Portfolio
 
 ## 🏆 Inspiration
 Built with love and inspired by nature, Green Groves is designed to provide a calming and insightful digital gardening experience. The UI is crafted with precision to meet modern web design standards and aims for award-winning quality on platforms like Awwwards and Behance.
