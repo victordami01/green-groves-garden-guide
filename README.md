@@ -42,6 +42,9 @@ npm install
 # Start the development server
 npm run dev
 ## 📸 Screenshots
+![Green Groves UI](https://iili.io/3SfFUyQ.png)
+![Green Groves UI](https://iili.io/3SfFS8x.png)
+![Green Groves UI](https://iili.io/3SfFhjS.png)
 
 
 ## 🧑‍💻 Author
