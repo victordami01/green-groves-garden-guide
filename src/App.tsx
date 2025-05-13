@@ -13,6 +13,13 @@ import Videos from "./pages/Videos";
 import Tips from "./pages/Tips";
 import ItemDetail from "./pages/ItemDetail";
 
+// Add type for ScrollReveal
+declare global {
+  interface Window {
+    ScrollReveal: any;
+  }
+}
+
 // Add ScrollReveal for scroll animations
 const loadScrollReveal = async () => {
   const ScrollReveal = (await import('scrollreveal')).default;
