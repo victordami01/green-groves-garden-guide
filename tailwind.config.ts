@@ -21,6 +21,8 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: ["Plus Jakarta Sans", "Noto Sans", "sans-serif"],
+				display: ["Playfair Display", "serif"],
+				organic: ["Bitter", "Georgia", "serif"],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -67,15 +69,19 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				garden: {
-					// Updated to a more vibrant and fresh green
-					'green': '#2e8b57', // SeaGreen - more balanced and appealing green
-					'light-green': '#66c2a5',
-					'dark-green': '#1a6540',
-					'white': '#f8fbf8',
-					'soil': '#8B4513',
-					'light-soil': '#A0522D',
-					'leaf': '#8FBC8F', // DarkSeaGreen - softer leaf color
-					'terracotta': '#E2725B',
+					// Updated to more sophisticated earthy tones
+					'green': '#386641', // Rich forest green
+					'light-green': '#6a994e',
+					'dark-green': '#2d5232',
+					'white': '#faf9f6', // Soft off-white
+					'soil': '#7f5539',  // Rich brown
+					'light-soil': '#a98467',
+					'leaf': '#a7c957',  // Fresh leaf green
+					'moss': '#84a98c',  // Soft moss green
+					'cream': '#f2e9e4',  // Cream color for backgrounds
+					'stone': '#d5bdaf',  // Stone color
+					'clay': '#cb997e',   // Clay color for claymorphism
+					'terracotta': '#bc6c25',
 				}
 			},
 			borderRadius: {
@@ -112,6 +118,32 @@ export default {
 					'0%': { transform: 'scale(0.95)', opacity: '0' },
 					'100%': { transform: 'scale(1)', opacity: '1' }
 				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'wave': {
+					'0%': { transform: 'rotate(0deg)' },
+					'10%': { transform: 'rotate(14deg)' },
+					'20%': { transform: 'rotate(-8deg)' },
+					'30%': { transform: 'rotate(14deg)' },
+					'40%': { transform: 'rotate(-4deg)' },
+					'50%': { transform: 'rotate(10deg)' },
+					'60%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(0deg)' },
+				},
+				'reveal': {
+					'0%': { clipPath: 'inset(0 100% 0 0)' },
+					'100%': { clipPath: 'inset(0 0 0 0)' }
+				},
+				'leaf-sway': {
+					'0%, 100%': { transform: 'rotate(-3deg)' },
+					'50%': { transform: 'rotate(3deg)' }
+				},
+				'blur-in': {
+					'0%': { filter: 'blur(5px)', opacity: '0' },
+					'100%': { filter: 'blur(0)', opacity: '1' }
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -119,6 +151,17 @@ export default {
 				'ticker': 'ticker 20s linear infinite',
 				'fade-in': 'fade-in 0.5s ease-out',
 				'scale-in': 'scale-in 0.3s ease-out',
+				'float': 'float 3s ease-in-out infinite',
+				'wave': 'wave 2s linear infinite',
+				'reveal': 'reveal 0.8s ease-out forwards',
+				'leaf-sway': 'leaf-sway 3s ease-in-out infinite',
+				'blur-in': 'blur-in 0.6s ease-out forwards',
+			},
+			transitionProperty: {
+				'height': 'height',
+				'spacing': 'margin, padding',
+				'width': 'width',
+				'filter': 'filter',
 			}
 		}
 	},

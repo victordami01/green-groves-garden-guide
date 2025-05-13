@@ -4,12 +4,13 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchGardenData } from '@/utils/dataService';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Leaf, Sprout, Search } from 'lucide-react';
+import { Leaf, Sprout, Search, Sun, Cloud, Droplet } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const HomeSection = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isVisible, setIsVisible] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   
   const { data, isLoading } = useQuery({
@@ -34,10 +35,18 @@ const HomeSection = () => {
       observer.observe(sectionRef.current);
     }
 
+    // Handle parallax effect on scroll
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
     return () => {
       if (sectionRef.current) {
         observer.disconnect();
       }
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -81,9 +90,16 @@ const HomeSection = () => {
 
   return (
     <section id="home" className="relative" ref={sectionRef}>
-      {/* Hero section with background image */}
-      <div className="relative h-[600px] overflow-hidden">
-        <div className="absolute inset-0">
+      {/* Hero section with parallax effect */}
+      <div className="relative h-screen overflow-hidden parallax-container">
+        {/* Parallax background layers */}
+        <div 
+          className="absolute inset-0"
+          style={{ 
+            transform: `translateY(${scrollPosition * 0.5}px)`,
+            transition: 'transform 0.1s cubic-bezier(0.33, 1, 0.68, 1)'
+          }}
+        >
           <img 
             src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&q=85&w=1200" 
             alt="Garden landscape" 
@@ -91,60 +107,120 @@ const HomeSection = () => {
             loading="eager"
             fetchPriority="high"
           />
-          <div className="absolute inset-0 bg-black/40 backdrop-filter backdrop-brightness-90"></div>
+          <div className="absolute inset-0 bg-black/30 backdrop-filter backdrop-brightness-90"></div>
+        </div>
+        
+        {/* Floating elements for depth */}
+        <div 
+          className="absolute top-[15%] left-[10%] animate-float opacity-70"
+          style={{ 
+            transform: `translateY(${scrollPosition * -0.2}px)`,
+          }}
+        >
+          <Cloud className="text-white h-16 w-16" />
+        </div>
+        
+        <div 
+          className="absolute bottom-[25%] right-[15%] animate-float opacity-70 animation-delay-700"
+          style={{ 
+            transform: `translateY(${scrollPosition * -0.3}px)`,
+            animationDelay: '700ms'
+          }}
+        >
+          <Leaf className="text-garden-leaf h-12 w-12 animate-leaf-sway" />
+        </div>
+        
+        <div 
+          className="absolute top-[60%] left-[25%] animate-float opacity-80 animation-delay-1500"
+          style={{ 
+            transform: `translateY(${scrollPosition * -0.25}px)`,
+            animationDelay: '1500ms'
+          }}
+        >
+          <Droplet className="text-garden-leaf h-10 w-10" />
         </div>
         
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col items-center justify-center text-center">
-          <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-              Welcome to Green Groves
+          <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className="reveal-element">
+              <Leaf className="h-16 w-16 text-white mx-auto mb-6 animate-wave" />
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-6 leading-tight reveal-element">
+              <span className="block">Welcome to</span>
+              <span className="text-garden-leaf">Green Groves</span>
             </h1>
-            <p className="text-lg md:text-xl text-white mb-8 max-w-2xl">
+            
+            <p className="text-xl md:text-2xl text-white mb-10 max-w-3xl mx-auto font-light reveal-element">
               Your one-stop location for all gardening supplies and resources
             </p>
             
-            <form onSubmit={handleSearch} className="w-full max-w-md relative">
-              <Input 
-                type="text" 
-                placeholder="Search our store" 
-                className="pr-20 h-12 bg-white/95 text-black"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              <Button 
-                type="submit"
-                className="absolute right-0 top-0 h-12 bg-garden-green hover:bg-garden-green/90 px-6 flex items-center justify-center"
-              >
-                <Search className="mr-2 h-4 w-4" />
-                Search
-              </Button>
+            <form onSubmit={handleSearch} className="w-full max-w-md relative mx-auto reveal-element">
+              <div className="relative">
+                <Input 
+                  type="text" 
+                  placeholder="Search our store" 
+                  className="pr-20 h-14 bg-white/95 text-black rounded-full pl-12 border-2 border-garden-leaf/50 focus-visible:ring-garden-green"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-garden-green" />
+                <Button 
+                  type="submit"
+                  className="absolute right-1 top-1 h-12 bg-garden-green hover:bg-garden-dark-green rounded-full px-6 flex items-center justify-center"
+                >
+                  Search
+                </Button>
+              </div>
             </form>
+            
+            <Button 
+              asChild
+              className="mt-10 bg-transparent border-2 border-white text-white hover:bg-white hover:text-garden-green transition-all duration-500 rounded-full h-14 px-8 text-lg reveal-element"
+            >
+              <a href="#about">
+                Explore More
+              </a>
+            </Button>
           </div>
         </div>
+        
+        {/* Gradient overlay at bottom for smooth transition */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent"></div>
       </div>
 
       {/* Today's Garden Inspiration */}
-      <div className="section-container py-12 fade-in">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center relative after:content-[''] after:absolute after:w-16 after:h-1 after:bg-garden-green/60 after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2">Today's Garden Inspiration</h2>
+      <div className="section-container py-24">
+        <h2 className="section-title slide-in-bottom">Today's Garden Inspiration</h2>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+        <div className="asymmetric-grid mt-12">
           {isLoading ? (
             [...Array(4)].map((_, i) => (
-              <div key={i} className="animate-pulse bg-muted h-48 rounded-lg"></div>
+              <div key={i} className="animate-pulse bg-muted h-80 rounded-lg"></div>
             ))
           ) : (
             inspirationImages.slice(0, 4).map((item, index) => (
-              <div key={index} className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 group">
-                <img 
-                  src={item.image} 
-                  alt={item.title} 
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-                <div className="p-3 bg-white">
-                  <h3 className="text-sm font-semibold">
-                    {['Tranquil Pondside Garden', 'Cozy Bench in the Garden', 'Elegant Garden Pathway', 'Soothing Fountain Garden'][index]}
-                  </h3>
+              <div 
+                key={index} 
+                className={`rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 group clay ${index % 2 === 0 ? 'slide-in-left' : 'slide-in-right'}`}
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="relative overflow-hidden">
+                  <img 
+                    src={item.image} 
+                    alt={item.title} 
+                    className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-garden-dark-green/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                    <h3 className="text-xl font-semibold mb-2">
+                      {['Tranquil Pondside Garden', 'Cozy Bench in the Garden', 'Elegant Garden Pathway', 'Soothing Fountain Garden'][index]}
+                    </h3>
+                    <p className="text-sm text-white/80">
+                      Get inspired by natural beauty and serenity
+                    </p>
+                  </div>
                 </div>
               </div>
             ))
@@ -152,44 +228,78 @@ const HomeSection = () => {
         </div>
       </div>
 
-      {/* Featured Products section */}
-      <div className="section-container bg-gray-50 py-12 fade-in">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center relative after:content-[''] after:absolute after:w-16 after:h-1 after:bg-garden-green/60 after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2">Featured Products</h2>
+      {/* Featured Products section with fluid animations */}
+      <div className="section-container bg-garden-cream py-24">
+        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background to-transparent z-10"></div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-8">
+        <h2 className="section-title slide-in-bottom">Featured Products</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mt-12">
           {featuredProducts.map((product, idx) => (
             <Link 
               to={`/tools/${idx}`} 
               key={idx} 
-              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group"
+              className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 group transform hover:-translate-y-2 reveal-element"
             >
-              <div className="h-40 overflow-hidden bg-gray-100 flex items-center justify-center">
+              <div className="h-48 overflow-hidden bg-gray-100">
                 <img 
                   src={product.image}
                   alt={product.title} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   loading="lazy"
                 />
               </div>
-              <div className="p-4">
-                <h3 className="font-medium text-gray-800 group-hover:text-garden-green transition-colors">{product.title}</h3>
-                <p className="text-sm text-gray-600 mt-1">{product.desc}</p>
+              <div className="p-6">
+                <h3 className="font-display text-lg font-medium text-garden-green group-hover:text-garden-dark-green transition-colors">
+                  {product.title}
+                </h3>
+                <p className="text-sm text-gray-600 mt-2">{product.desc}</p>
+                <div className="mt-4 w-full h-[1px] bg-gradient-to-r from-transparent via-garden-green/30 to-transparent"></div>
+                <p className="mt-4 text-garden-green font-medium flex items-center text-sm">
+                  <span>Explore</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2 transform group-hover:translate-x-1 transition-transform">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </p>
               </div>
             </Link>
           ))}
         </div>
       </div>
 
-      {/* Call to action section */}
-      <div className="section-container py-16 text-center bg-garden-green/10 fade-in">
-        <h2 className="text-3xl font-bold mb-4 text-gray-800">Ready to start your garden adventure?</h2>
-        <p className="text-gray-600 mb-8 max-w-2xl mx-auto">Find everything you need to grow and enjoy beautiful plants at home.</p>
-        <Button 
-          size="lg" 
-          className="bg-garden-green hover:bg-garden-green/90 text-white px-8 py-6 h-auto text-lg shadow-lg hover:shadow-xl transition-all"
-        >
-          <Sprout className="mr-2 h-5 w-5" /> Get more inspiration
-        </Button>
+      {/* Call to action section with Lottie animation */}
+      <div className="section-container py-24 text-center bg-gradient-to-b from-garden-cream to-white">
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-8 slide-in-bottom">
+            {/* Lottie animation for plant growing */}
+            <lottie-player 
+              src="https://assets8.lottiefiles.com/packages/lf20_jbrw3hcz.json"
+              background="transparent"
+              speed="0.6"
+              style={{width: "180px", height: "180px"}}
+              loop
+              autoplay
+              className="mx-auto"
+            ></lottie-player>
+          </div>
+          
+          <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 text-garden-green slide-in-bottom">
+            Ready to start your garden adventure?
+          </h2>
+          
+          <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto slide-in-bottom">
+            Find everything you need to grow and enjoy beautiful plants at home.
+          </p>
+          
+          <Button 
+            size="lg" 
+            className="bg-garden-green hover:bg-garden-dark-green text-white px-10 py-7 h-auto text-lg rounded-full shadow-lg hover:shadow-xl transition-all slide-in-bottom group"
+          >
+            <Sprout className="mr-3 h-6 w-6 group-hover:rotate-12 transition-transform" /> 
+            Get more inspiration
+          </Button>
+        </div>
       </div>
     </section>
   );

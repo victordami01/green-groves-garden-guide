@@ -3,71 +3,76 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Bitter:wght@400;500;600&display=swap');
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 40 33% 98%;
+    --foreground: 20 6% 18%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 40 33% 98%;
+    --card-foreground: 20 6% 18%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 40 33% 98%;
+    --popover-foreground: 20 6% 18%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 122 26% 31%;
+    --primary-foreground: 40 33% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 34 33% 86%;
+    --secondary-foreground: 24 25% 20%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 34 20% 92%;
+    --muted-foreground: 20 6% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 84 28% 56%;
+    --accent-foreground: 122 26% 18%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 20 5% 85%;
+    --input: 20 5% 85%;
+    --ring: 122 26% 31%;
 
     --radius: 0.5rem;
     
-    /* Updated green to a more appealing SeaGreen shade */
-    --garden-green: 146 50% 36%;
-    --garden-white: 0 0% 99%;
+    /* Updated green to a richer forest green */
+    --garden-green: 125 30% 31%;
+    --garden-white: 40 33% 97%;
+    
+    /* Added for parallax effect */
+    --parallax-perspective: 1000px;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 20 14% 8%;
+    --foreground: 40 33% 94%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 20 14% 10%;
+    --card-foreground: 40 33% 94%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 20 14% 10%;
+    --popover-foreground: 40 33% 94%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 122 26% 31%;
+    --primary-foreground: 40 33% 98%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 34 15% 25%;
+    --secondary-foreground: 40 33% 94%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 20 14% 15%;
+    --muted-foreground: 20 6% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 84 20% 35%;
+    --accent-foreground: 40 33% 94%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 40 33% 94%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 20 14% 20%;
+    --input: 20 14% 20%;
+    --ring: 122 26% 40%;
   }
 }
 
@@ -76,7 +81,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
     scroll-behavior: smooth;
   }
   
@@ -84,23 +89,33 @@
   html {
     scroll-behavior: smooth;
   }
+  
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
 }
 
 @layer components {
   .section-container {
-    @apply py-16 px-4 container mx-auto;
+    @apply py-24 px-4 container mx-auto relative overflow-hidden;
   }
   
   .section-title {
-    @apply text-3xl font-bold text-center text-garden-green mb-6 relative after:content-[''] after:absolute after:w-20 after:h-1 after:bg-garden-green/60 after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2;
+    @apply text-4xl md:text-5xl font-bold text-center text-garden-green mb-10 relative;
+    font-weight: 600;
+  }
+  
+  .section-title::after {
+    @apply content-[''] absolute w-28 h-1 bg-garden-light-green bottom-[-12px] left-1/2 -translate-x-1/2;
+    border-radius: 30px;
   }
   
   .card-grid {
-    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6;
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8;
   }
   
   .garden-card {
-    @apply flex flex-col h-full overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-xl;
+    @apply flex flex-col h-full overflow-hidden rounded-xl shadow-md transition-all duration-500 hover:shadow-xl;
   }
   
   .garden-card-link {
@@ -108,20 +123,61 @@
   }
   
   .garden-card-image {
-    @apply w-full h-full object-cover transition-transform hover:scale-110 duration-500;
+    @apply w-full h-full object-cover transition-all duration-700 hover:scale-110;
   }
   
   .garden-card-title {
-    @apply text-xl font-semibold mb-2 text-garden-green;
+    @apply text-xl font-semibold mb-3 text-garden-green;
   }
   
   .garden-card-description {
     @apply text-gray-600;
   }
   
-  /* Improve button styling */
+  /* Improved button styling */
   .btn-garden {
-    @apply bg-garden-green text-white hover:bg-garden-green/90 transition-all duration-300 transform hover:translate-y-[-2px] rounded-md px-4 py-2;
+    @apply bg-garden-green text-garden-white hover:bg-garden-dark-green transition-all duration-500 transform hover:translate-y-[-2px] rounded-md px-6 py-3 shadow-md hover:shadow-lg;
+  }
+  
+  /* Glass effect */
+  .glass {
+    @apply backdrop-blur-md bg-white/10 border border-white/20 shadow-lg;
+  }
+  
+  /* Claymorphism effect */
+  .clay {
+    @apply bg-garden-cream rounded-xl shadow-[6px_6px_12px_#0000001a,_-6px_-6px_12px_#ffffff80] border border-garden-cream/50;
+  }
+  
+  /* Parallax container */
+  .parallax-container {
+    perspective: var(--parallax-perspective);
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .parallax-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+  
+  /* Asymmetric grid */
+  .asymmetric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-auto-rows: minmax(100px, auto);
+    gap: 1.5rem;
+  }
+  
+  .asymmetric-grid > *:nth-child(3n+1) {
+    grid-row: span 2;
+  }
+  
+  .asymmetric-grid > *:nth-child(5n+3) {
+    grid-column: span 2;
   }
 }
 
@@ -153,4 +209,63 @@
 
 .fade-in {
   animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Custom slide-in animation for elements */
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s ease-out;
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s ease-out;
+}
+
+.slide-in-bottom {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.slide-in-active {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}
+
+/* Reveal text animation for headings */
+.reveal-text {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.reveal-text span {
+  display: block;
+  transform: translateY(100%);
+  transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.reveal-text.active span {
+  transform: translateY(0);
+}
+
+/* Custom scroll for webkit browsers */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #386641;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2d5232;
 }
