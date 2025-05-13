@@ -1,3 +1,4 @@
+
 import { useQuery } from '@tanstack/react-query';
 import { fetchGardenData } from '@/utils/dataService';
 import { Card, CardContent } from '@/components/ui/card';
@@ -113,8 +114,8 @@ const ToolsSection = ({ fullPage = false }: ToolsSectionProps) => {
       return [];
     }
     // Less strict validation: allow items with partial data
-    const validItems = items.map((item): GardenItem => ({
-      id: item?.id?.toString() || `fallback-${Math.random().toString(36).slice(2)}`,
+    const validItems = items.map((item, index): GardenItem => ({
+      id: item?.id?.toString() || `${index}`,
       title: item?.title?.toString() || 'Untitled',
       description: item?.description?.toString() || 'No description available',
       image: item?.image?.toString(),
@@ -177,7 +178,7 @@ const ToolsSection = ({ fullPage = false }: ToolsSectionProps) => {
               <div className="card-grid">
                 {displayedData[category].map((item, index) => (
                   <Link
-                    to={`/${category}/${item.id}`}
+                    to={`/${category}/${index}`}
                     key={item.id}
                     className="garden-card-link"
                     aria-label={`View details for ${item.title}`}

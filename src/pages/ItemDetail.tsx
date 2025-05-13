@@ -25,33 +25,71 @@ const ItemDetail = () => {
 
   useEffect(() => {
     if (data && itemType && itemIndex) {
+      // Parse the index - it can be an ID string or a number
       const index = parseInt(itemIndex);
       
       // Get the item from the appropriate array
-      if (itemType === 'tools' && data.tools && data.tools[index]) {
-        setItem(data.tools[index]);
-        setBackLink('/#tools');
-        setPageTitle('Tool Detail');
-      } else if (itemType === 'books' && data.books && data.books[index]) {
-        setItem(data.books[index]);
-        setBackLink('/#books');
-        setPageTitle('Book Detail');
-      } else if (itemType === 'tips' && data.tips && data.tips[index]) {
-        setItem(data.tips[index]);
-        setBackLink('/#tips');
-        setPageTitle('Gardening Tip');
-      } else if (itemType === 'essentials' && data.essentials && data.essentials[index]) {
-        setItem(data.essentials[index]);
-        setBackLink('/#tools');
-        setPageTitle('Garden Essential');
-      } else if (itemType === 'pots' && data.pots && data.pots[index]) {
-        setItem(data.pots[index]);
-        setBackLink('/#tools');
-        setPageTitle('Pot & Container');
-      } else if (itemType === 'accessories' && data.accessories && data.accessories[index]) {
-        setItem(data.accessories[index]);
-        setBackLink('/#tools');
-        setPageTitle('Accessory Detail');
+      if (itemType === 'tools' && data.tools) {
+        // Find the item by index or ID
+        const foundItem = isNaN(index) ? 
+          data.tools.find(t => t.id === itemIndex) : 
+          data.tools[index];
+          
+        if (foundItem) {
+          setItem(foundItem);
+          setBackLink('/#tools');
+          setPageTitle('Tool Detail');
+        }
+      } else if (itemType === 'books' && data.books) {
+        const foundItem = isNaN(index) ? 
+          data.books.find(t => t.id === itemIndex) : 
+          data.books[index];
+          
+        if (foundItem) {
+          setItem(foundItem);
+          setBackLink('/#books');
+          setPageTitle('Book Detail');
+        }
+      } else if (itemType === 'tips' && data.tips) {
+        const foundItem = isNaN(index) ? 
+          data.tips.find(t => t.id === itemIndex) : 
+          data.tips[index];
+          
+        if (foundItem) {
+          setItem(foundItem);
+          setBackLink('/#tips');
+          setPageTitle('Gardening Tip');
+        }
+      } else if (itemType === 'essentials' && data.essentials) {
+        const foundItem = isNaN(index) ? 
+          data.essentials.find(t => t.id === itemIndex) : 
+          data.essentials[index];
+          
+        if (foundItem) {
+          setItem(foundItem);
+          setBackLink('/#tools');
+          setPageTitle('Garden Essential');
+        }
+      } else if (itemType === 'pots' && data.pots) {
+        const foundItem = isNaN(index) ? 
+          data.pots.find(t => t.id === itemIndex) : 
+          data.pots[index];
+          
+        if (foundItem) {
+          setItem(foundItem);
+          setBackLink('/#tools');
+          setPageTitle('Pot & Container');
+        }
+      } else if (itemType === 'accessories' && data.accessories) {
+        const foundItem = isNaN(index) ? 
+          data.accessories.find(t => t.id === itemIndex) : 
+          data.accessories[index];
+          
+        if (foundItem) {
+          setItem(foundItem);
+          setBackLink('/#tools');
+          setPageTitle('Accessory Detail');
+        }
       }
     }
   }, [data, itemType, itemIndex]);

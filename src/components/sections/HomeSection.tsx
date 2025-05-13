@@ -99,40 +99,50 @@ const HomeSection = () => {
           <div className="absolute inset-0 bg-black/30 backdrop-filter backdrop-brightness-90"></div>
         </div>
         
-        {/* Floating elements for depth */}
+        {/* Floating elements with animations */}
         <div 
-          className="absolute top-[15%] left-[10%] opacity-70"
+          className="absolute top-[15%] left-[10%] opacity-70 animate-float"
           style={{ 
             transform: `translateY(${scrollPosition * -0.2}px)`,
           }}
         >
-          <Cloud className="text-white h-16 w-16" />
+          <Cloud className="text-white h-16 w-16 animate-leaf-sway" />
         </div>
         
         <div 
-          className="absolute bottom-[25%] right-[15%] opacity-70"
+          className="absolute bottom-[25%] right-[15%] opacity-70 animate-float"
           style={{ 
             transform: `translateY(${scrollPosition * -0.3}px)`,
             animationDelay: '700ms'
           }}
         >
-          <Leaf className="text-garden-leaf h-12 w-12" />
+          <Leaf className="text-garden-leaf h-12 w-12 animate-leaf-sway" />
         </div>
         
         <div 
-          className="absolute top-[60%] left-[25%] opacity-80"
+          className="absolute top-[60%] left-[25%] opacity-80 animate-float"
           style={{ 
             transform: `translateY(${scrollPosition * -0.25}px)`,
             animationDelay: '1500ms'
           }}
         >
-          <Droplet className="text-garden-leaf h-10 w-10" />
+          <Droplet className="text-garden-leaf h-10 w-10 animate-leaf-sway" />
+        </div>
+
+        <div 
+          className="absolute top-[20%] right-[20%] opacity-70 animate-float"
+          style={{ 
+            transform: `translateY(${scrollPosition * -0.2}px)`,
+            animationDelay: '300ms'
+          }}
+        >
+          <Sun className="text-garden-leaf/80 h-12 w-12 animate-pulse" />
         </div>
         
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col items-center justify-center text-center">
-          <div>
+          <div className="animate-scale-in">
             <div>
-              <Leaf className="h-16 w-16 text-white mx-auto mb-6" />
+              <Leaf className="h-16 w-16 text-white mx-auto mb-6 animate-leaf-sway" />
             </div>
             
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-6 leading-tight">
@@ -165,10 +175,11 @@ const HomeSection = () => {
             
             <Button 
               asChild
-              className="mt-10 bg-transparent border-2 border-white text-white hover:bg-white hover:text-garden-green transition-all duration-500 rounded-full h-14 px-8 text-lg"
+              className="mt-10 bg-transparent border-2 border-white text-white hover:bg-white hover:text-garden-green transition-all duration-500 rounded-full h-14 px-8 text-lg group"
             >
               <a href="#about">
                 Explore More
+                <span className="ml-2 relative group-hover:translate-x-1 transition-transform inline-block">→</span>
               </a>
             </Button>
           </div>
@@ -283,17 +294,18 @@ const HomeSection = () => {
       ></lottie-player>
     </div>
 
-    <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 text-garden-green">
+    <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 text-garden-green animate-fade-in">
       Ready to start your garden adventure?
     </h2>
 
-    <p className="text-xl text-gray-600 mb-10 max-w-2xl text-center">
+    <p className="text-xl text-gray-600 mb-10 max-w-2xl text-center animate-fade-in" style={{ animationDelay: '200ms' }}>
       Find everything you need to grow and enjoy beautiful plants at home.
     </p>
 
     <Button
       size="lg"
-      className="bg-garden-green hover:bg-garden-dark-green text-white px-10 py-7 h-auto text-lg rounded-full shadow-lg hover:shadow-xl transition-all group"
+      className="bg-garden-green hover:bg-garden-dark-green text-white px-10 py-7 h-auto text-lg rounded-full shadow-lg hover:shadow-xl transition-all group animate-fade-in"
+      style={{ animationDelay: '400ms' }}
     >
       <Sprout className="mr-3 h-6 w-6 group-hover:rotate-12 transition-transform" />
       Get more inspiration
