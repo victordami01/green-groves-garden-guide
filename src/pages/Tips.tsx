@@ -24,7 +24,7 @@ const Tips = () => {
       'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2',
       'https://images.unsplash.com/photo-1622383563227-04401ab4e5ea',
       'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735',
-      'https://images.unsplash.com/photo-1561454304-e1aaddabd1ef',
+      'https://images.unsplash.com/photo-1624720114708-0cbd6ee41f4e',
       'https://images.unsplash.com/photo-1557708962-8828085a2c48'
     ];
     

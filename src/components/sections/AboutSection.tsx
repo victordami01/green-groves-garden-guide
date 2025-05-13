@@ -54,22 +54,22 @@ const AboutSection = () => {
                     <div className="p-4 bg-white/50 rounded-xl">
                       <h4 className="font-medium text-garden-green mb-2">Sustainability</h4>
                       <p className="text-sm text-gray-600">We promote eco-friendly gardening practices</p>
-                      <div className="mt-2 text-garden-green">✅</div>
+                      <div className="mt-2 text-garden-green"></div>
                     </div>
                     <div className="p-4 bg-white/50 rounded-xl">
                       <h4 className="font-medium text-garden-green mb-2">Quality</h4>
                       <p className="text-sm text-gray-600">We source only the best gardening supplies</p>
-                      <div className="mt-2 text-garden-green">✅</div>
+                      <div className="mt-2 text-garden-green"></div>
                     </div>
                     <div className="p-4 bg-white/50 rounded-xl">
                       <h4 className="font-medium text-garden-green mb-2">Community</h4>
                       <p className="text-sm text-gray-600">We support local gardening initiatives</p>
-                      <div className="mt-2 text-garden-green">✅</div>
+                      <div className="mt-2 text-garden-green"></div>
                     </div>
                     <div className="p-4 bg-white/50 rounded-xl">
                       <h4 className="font-medium text-garden-green mb-2">Education</h4>
                       <p className="text-sm text-gray-600">We share knowledge to help you succeed</p>
-                      <div className="mt-2 text-garden-green">✅</div>
+                      <div className="mt-2 text-garden-green"></div>
                     </div>
                   </div>
                 </div>

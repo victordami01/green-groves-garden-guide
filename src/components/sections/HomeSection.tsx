@@ -53,27 +53,27 @@ const HomeSection = () => {
     { 
       title: 'Gardening Gloves', 
       desc: 'Protect your hands with these durable gloves', 
-      image: 'https://images.unsplash.com/photo-1617723569153-2801406373f4?auto=format&q=80&w=400' 
+      image: 'https://images.unsplash.com/photo-1599778150914-88e98e0c3a3e?auto=format&q=80&w=400' 
     },
     { 
       title: 'Garden Hand Trowel', 
       desc: 'Essential tool for planting and potting', 
-      image: 'https://images.unsplash.com/photo-1585513849702-2a2f8afd001b?auto=format&q=80&w=400' 
-    },
-    { 
-      title: 'Pruning Shears', 
-      desc: 'Sharp and precise cutting for your plants', 
-      image: 'https://images.unsplash.com/photo-1544264981-8897158c283d?auto=format&q=80&w=400' 
+      image: 'https://images.unsplash.com/photo-1599410492808-0d430b18cb99?auto=format&q=80&w=400' 
     },
     { 
       title: 'Watering Can', 
       desc: 'Perfect for watering indoor and outdoor plants', 
-      image: 'https://images.unsplash.com/photo-1664544521604-b0692bda3d4a?auto=format&q=80&w=400' 
+      image: 'https://images.unsplash.com/photo-1599277100479-3252d492a19a?auto=format&q=80&w=400' 
     },
     { 
-      title: 'Soil Moisture Meter', 
+      title: 'Packing Tools', 
       desc: 'Avoid overwatering your plants with this handy tool', 
-      image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&q=80&w=400' 
+      image: 'https://images.unsplash.com/photo-1573561368183-fd88bdb4503d?auto=format&q=80&w=400' 
+    },
+     { 
+      title: 'Pruning Shears', 
+      desc: 'Sharp and precise cutting for your plants', 
+      image: 'https://images.unsplash.com/photo-1680124744736-859f16257ef0?auto=format&q=80&w=400' 
     }
   ];
 
@@ -90,7 +90,7 @@ const HomeSection = () => {
           }}
         >
           <img 
-            src="https://images.unsplash.com/photo-1466692476655-9df5aeb59e13?auto=format&q=85&w=1200" 
+            src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&q=85&w=1200" 
             alt="Garden landscape" 
             className="w-full h-full object-cover"
             loading="eager"
@@ -196,10 +196,10 @@ const HomeSection = () => {
                 <div className="relative overflow-hidden">
                   <img 
                     src={[
-                      "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae",
-                      "https://images.unsplash.com/photo-1598902108854-10e335adac99",
+                      "https://images.unsplash.com/photo-1444392061186-9fc38f84f726",
+                      "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
                       "https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e",
-                      "https://images.unsplash.com/photo-1444392061186-9fc38f84f726"
+                     
                     ][index]} 
                     alt={item.title} 
                     className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-700"
@@ -268,38 +268,40 @@ const HomeSection = () => {
       </div>
 
       {/* Call to action section with Lottie animation */}
-      <div className="section-container py-24 text-center bg-gradient-to-b from-garden-cream to-white">
-        <div className="max-w-4xl mx-auto">
-          <div className="mb-8">
-            {/* Lottie animation for plant growing */}
-            <lottie-player 
-              src="https://assets8.lottiefiles.com/packages/lf20_jbrw3hcz.json"
-              background="transparent"
-              speed="0.6"
-              style={{width: "180px", height: "180px"}}
-              loop
-              autoplay
-              className="mx-auto"
-            ></lottie-player>
-          </div>
-          
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 text-garden-green">
-            Ready to start your garden adventure?
-          </h2>
-          
-          <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-            Find everything you need to grow and enjoy beautiful plants at home.
-          </p>
-          
-          <Button 
-            size="lg" 
-            className="bg-garden-green hover:bg-garden-dark-green text-white px-10 py-7 h-auto text-lg rounded-full shadow-lg hover:shadow-xl transition-all group"
-          >
-            <Sprout className="mr-3 h-6 w-6 group-hover:rotate-12 transition-transform" /> 
-            Get more inspiration
-          </Button>
-        </div>
-      </div>
+    <div className="section-container py-10 text-center bg-gradient-to-b from-garden-cream to-white">
+  <div className="max-w-4xl mx-auto flex flex-col items-center">
+    
+    {/* Lottie animation for plant growing */}
+    <div className="mb-2 flex justify-center">
+      <lottie-player
+        src="https://lottie.host/72aaa2cf-762c-44e8-9e69-325d844ce7ad/cvmhPVuTdF.json"
+        background="transparent"
+        speed="1.0"
+        style={{ width: "3000px", height: "300px" }}
+        loop
+        autoplay
+      ></lottie-player>
+    </div>
+
+    <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 text-garden-green">
+      Ready to start your garden adventure?
+    </h2>
+
+    <p className="text-xl text-gray-600 mb-10 max-w-2xl text-center">
+      Find everything you need to grow and enjoy beautiful plants at home.
+    </p>
+
+    <Button
+      size="lg"
+      className="bg-garden-green hover:bg-garden-dark-green text-white px-10 py-7 h-auto text-lg rounded-full shadow-lg hover:shadow-xl transition-all group"
+    >
+      <Sprout className="mr-3 h-6 w-6 group-hover:rotate-12 transition-transform" />
+      Get more inspiration
+    </Button>
+
+  </div>
+</div>
+
     </section>
   );
 };

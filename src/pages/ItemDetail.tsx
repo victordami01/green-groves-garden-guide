@@ -69,7 +69,7 @@ const ItemDetail = () => {
       'https://images.unsplash.com/photo-1526397751294-331021109fbd', // garden accessories
       'https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e', // gardening books
       'https://images.unsplash.com/photo-1598900438157-e5d96e6f0cf6', // garden planner
-      'https://images.unsplash.com/photo-1581579438747-e8dc1932f8a2', // pots
+      'https://images.unsplash.com/photo-1624720114708-0cbd6ee41f4e', // pots
       'https://images.unsplash.com/photo-1504633573191-2232e7529874'  // succulent
     ];
     
