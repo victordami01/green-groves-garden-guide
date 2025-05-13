@@ -6,6 +6,13 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Leaf, Sprout, Search, Sun, Cloud, Droplet } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselNext, 
+  CarouselPrevious 
+} from '@/components/ui/carousel';
 
 const HomeSection = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -41,7 +48,7 @@ const HomeSection = () => {
     }
   };
 
-  // Featured products with optimized image loading
+  // Featured products with proper garden tool images
   const featuredProducts = [
     { 
       title: 'Gardening Gloves', 
@@ -49,24 +56,24 @@ const HomeSection = () => {
       image: 'https://images.unsplash.com/photo-1617723569153-2801406373f4?auto=format&q=80&w=400' 
     },
     { 
-      title: 'Trowel and Pruner Set', 
-      desc: 'The set includes a trowel, pruner and more', 
+      title: 'Garden Hand Trowel', 
+      desc: 'Essential tool for planting and potting', 
       image: 'https://images.unsplash.com/photo-1585513849702-2a2f8afd001b?auto=format&q=80&w=400' 
     },
     { 
-      title: 'Plant Mister', 
-      desc: 'Keep your houseplants happy and moist with this fine mist sprayer', 
-      image: 'https://images.unsplash.com/photo-1653830391012-c92f486bbcbb?auto=format&q=80&w=400' 
+      title: 'Pruning Shears', 
+      desc: 'Sharp and precise cutting for your plants', 
+      image: 'https://images.unsplash.com/photo-1544264981-8897158c283d?auto=format&q=80&w=400' 
     },
     { 
-      title: 'Macrame Plant Hanger', 
-      desc: 'Add a natural touch to your indoor garden with a macrame plant hanger', 
-      image: 'https://images.unsplash.com/photo-1615307799867-b9bbc5a90929?auto=format&q=80&w=400' 
+      title: 'Watering Can', 
+      desc: 'Perfect for watering indoor and outdoor plants', 
+      image: 'https://images.unsplash.com/photo-1664544521604-b0692bda3d4a?auto=format&q=80&w=400' 
     },
     { 
       title: 'Soil Moisture Meter', 
       desc: 'Avoid overwatering your plants with this handy tool', 
-      image: 'https://images.unsplash.com/photo-1625179893310-8e419b5b2d60?auto=format&q=80&w=400' 
+      image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&q=80&w=400' 
     }
   ];
 
@@ -83,7 +90,7 @@ const HomeSection = () => {
           }}
         >
           <img 
-            src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&q=85&w=1200" 
+            src="https://images.unsplash.com/photo-1466692476655-9df5aeb59e13?auto=format&q=85&w=1200" 
             alt="Garden landscape" 
             className="w-full h-full object-cover"
             loading="eager"
@@ -184,11 +191,16 @@ const HomeSection = () => {
             inspirationImages.slice(0, 4).map((item, index) => (
               <div 
                 key={index} 
-                className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 group clay"
+                className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 group"
               >
                 <div className="relative overflow-hidden">
                   <img 
-                    src={item.image} 
+                    src={[
+                      "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae",
+                      "https://images.unsplash.com/photo-1598902108854-10e335adac99",
+                      "https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e",
+                      "https://images.unsplash.com/photo-1444392061186-9fc38f84f726"
+                    ][index]} 
                     alt={item.title} 
                     className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
@@ -209,43 +221,50 @@ const HomeSection = () => {
         </div>
       </div>
 
-      {/* Featured Products section with fluid animations */}
+      {/* Featured Products section with carousel */}
       <div className="section-container bg-garden-cream py-24">
         <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background to-transparent z-10"></div>
         
         <h2 className="section-title">Featured Products</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mt-12">
-          {featuredProducts.map((product, idx) => (
-            <Link 
-              to={`/tools/${idx}`} 
-              key={idx} 
-              className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 group transform hover:-translate-y-2"
-            >
-              <div className="h-48 overflow-hidden bg-gray-100">
-                <img 
-                  src={product.image}
-                  alt={product.title} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="font-display text-lg font-medium text-garden-green group-hover:text-garden-dark-green transition-colors">
-                  {product.title}
-                </h3>
-                <p className="text-sm text-gray-600 mt-2">{product.desc}</p>
-                <div className="mt-4 w-full h-[1px] bg-gradient-to-r from-transparent via-garden-green/30 to-transparent"></div>
-                <p className="mt-4 text-garden-green font-medium flex items-center text-sm">
-                  <span>Explore</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2 transform group-hover:translate-x-1 transition-transform">
-                    <path d="M5 12h14"></path>
-                    <path d="m12 5 7 7-7 7"></path>
-                  </svg>
-                </p>
-              </div>
-            </Link>
-          ))}
+        <div className="mt-12">
+          <Carousel className="w-full max-w-5xl mx-auto">
+            <CarouselContent>
+              {featuredProducts.map((product, idx) => (
+                <CarouselItem key={idx} className="md:basis-1/2 lg:basis-1/3 pl-6">
+                  <Link 
+                    to={`/tools/${idx}`}
+                    className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 group transform hover:-translate-y-2 block h-full"
+                  >
+                    <div className="h-48 overflow-hidden bg-gray-100">
+                      <img 
+                        src={product.image}
+                        alt={product.title} 
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="font-display text-lg font-medium text-garden-green group-hover:text-garden-dark-green transition-colors">
+                        {product.title}
+                      </h3>
+                      <p className="text-sm text-gray-600 mt-2">{product.desc}</p>
+                      <div className="mt-4 w-full h-[1px] bg-gradient-to-r from-transparent via-garden-green/30 to-transparent"></div>
+                      <p className="mt-4 text-garden-green font-medium flex items-center text-sm">
+                        <span>Explore</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2 transform group-hover:translate-x-1 transition-transform">
+                          <path d="M5 12h14"></path>
+                          <path d="m12 5 7 7-7 7"></path>
+                        </svg>
+                      </p>
+                    </div>
+                  </Link>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-0 lg:-left-12" />
+            <CarouselNext className="right-0 lg:-right-12" />
+          </Carousel>
         </div>
       </div>
 

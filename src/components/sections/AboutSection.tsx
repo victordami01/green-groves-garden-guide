@@ -12,44 +12,16 @@ const AboutSection = () => {
   const aboutData = data?.about;
   const parallaxRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    // Simple parallax effect for the image
-    const handleScroll = () => {
-      if (!parallaxRef.current) return;
-      
-      const scrollY = window.scrollY;
-      const sectionTop = parallaxRef.current.offsetTop;
-      const sectionHeight = parallaxRef.current.offsetHeight;
-      
-      // Only apply parallax when section is in view
-      if (scrollY > sectionTop - window.innerHeight && scrollY < sectionTop + sectionHeight) {
-        const offset = (scrollY - (sectionTop - window.innerHeight)) * 0.2;
-        
-        // Apply parallax to the image
-        const image = parallaxRef.current.querySelector('.parallax-image');
-        if (image) {
-          (image as HTMLElement).style.transform = `translateY(${offset}px)`;
-        }
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
     <section id="about" className="section-container py-32 bg-garden-white">
       <div className="absolute left-0 top-0 w-full h-32 bg-gradient-to-b from-background to-transparent z-10"></div>
       
       <div className="max-w-6xl mx-auto">
-        <h2 className="section-title slide-in-bottom">About Us</h2>
+        <h2 className="section-title">About Us</h2>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-16" ref={parallaxRef}>
           {/* Left column with description */}
-          <div className="slide-in-left">
+          <div>
             {isLoading ? (
               <div className="space-y-4">
                 <div className="h-4 bg-muted rounded w-3/4 animate-pulse"></div>
@@ -59,7 +31,7 @@ const AboutSection = () => {
               </div>
             ) : (
               <div className="clay p-8 rounded-2xl h-full flex flex-col justify-center">
-                <h3 className="text-2xl md:text-3xl font-display font-semibold mb-6 text-garden-green relative reveal-text">
+                <h3 className="text-2xl md:text-3xl font-display font-semibold mb-6 text-garden-green">
                   <span>Our Story</span>
                 </h3>
                 
@@ -82,18 +54,22 @@ const AboutSection = () => {
                     <div className="p-4 bg-white/50 rounded-xl">
                       <h4 className="font-medium text-garden-green mb-2">Sustainability</h4>
                       <p className="text-sm text-gray-600">We promote eco-friendly gardening practices</p>
+                      <div className="mt-2 text-garden-green">✅</div>
                     </div>
                     <div className="p-4 bg-white/50 rounded-xl">
                       <h4 className="font-medium text-garden-green mb-2">Quality</h4>
                       <p className="text-sm text-gray-600">We source only the best gardening supplies</p>
+                      <div className="mt-2 text-garden-green">✅</div>
                     </div>
                     <div className="p-4 bg-white/50 rounded-xl">
                       <h4 className="font-medium text-garden-green mb-2">Community</h4>
                       <p className="text-sm text-gray-600">We support local gardening initiatives</p>
+                      <div className="mt-2 text-garden-green">✅</div>
                     </div>
                     <div className="p-4 bg-white/50 rounded-xl">
                       <h4 className="font-medium text-garden-green mb-2">Education</h4>
                       <p className="text-sm text-gray-600">We share knowledge to help you succeed</p>
+                      <div className="mt-2 text-garden-green">✅</div>
                     </div>
                   </div>
                 </div>
@@ -102,9 +78,9 @@ const AboutSection = () => {
           </div>
           
           {/* Right column with team members */}
-          <div className="slide-in-right">
+          <div>
             <div className="relative h-full">
-              <div className="parallax-image w-full h-full rounded-2xl overflow-hidden">
+              <div className="w-full h-full rounded-2xl overflow-hidden">
                 <img 
                   src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2" 
                   alt="Garden team" 
