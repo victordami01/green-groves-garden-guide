@@ -48,7 +48,7 @@ const HomeSection = () => {
     }
   };
 
-  // Featured products with proper garden tool images
+  // Featured products with updated garden tool images
   const featuredProducts = [
     { 
       title: 'Gardening Gloves', 
@@ -79,7 +79,7 @@ const HomeSection = () => {
 
   return (
     <section id="home" className="relative" ref={sectionRef}>
-      {/* Hero section with parallax effect */}
+      {/* Hero section with parallax effect - reverted to original hero image */}
       <div className="relative h-screen overflow-hidden parallax-container">
         {/* Parallax background layers */}
         <div 
@@ -101,7 +101,7 @@ const HomeSection = () => {
         
         {/* Floating elements for depth */}
         <div 
-          className="absolute top-[15%] left-[10%] animate-float opacity-70"
+          className="absolute top-[15%] left-[10%] opacity-70"
           style={{ 
             transform: `translateY(${scrollPosition * -0.2}px)`,
           }}
@@ -110,17 +110,17 @@ const HomeSection = () => {
         </div>
         
         <div 
-          className="absolute bottom-[25%] right-[15%] animate-float opacity-70"
+          className="absolute bottom-[25%] right-[15%] opacity-70"
           style={{ 
             transform: `translateY(${scrollPosition * -0.3}px)`,
             animationDelay: '700ms'
           }}
         >
-          <Leaf className="text-garden-leaf h-12 w-12 animate-leaf-sway" />
+          <Leaf className="text-garden-leaf h-12 w-12" />
         </div>
         
         <div 
-          className="absolute top-[60%] left-[25%] animate-float opacity-80"
+          className="absolute top-[60%] left-[25%] opacity-80"
           style={{ 
             transform: `translateY(${scrollPosition * -0.25}px)`,
             animationDelay: '1500ms'
@@ -130,9 +130,9 @@ const HomeSection = () => {
         </div>
         
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col items-center justify-center text-center">
-          <div className="transition-all duration-1000 opacity-100 translate-y-0">
+          <div>
             <div>
-              <Leaf className="h-16 w-16 text-white mx-auto mb-6 animate-wave" />
+              <Leaf className="h-16 w-16 text-white mx-auto mb-6" />
             </div>
             
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-6 leading-tight">
@@ -178,7 +178,7 @@ const HomeSection = () => {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent"></div>
       </div>
 
-      {/* Today's Garden Inspiration */}
+      {/* Today's Garden Inspiration - removed background */}
       <div className="section-container py-24">
         <h2 className="section-title">Today's Garden Inspiration</h2>
         
@@ -205,9 +205,8 @@ const HomeSection = () => {
                     className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-garden-dark-green/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                    <h3 className="text-xl font-semibold mb-2">
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-xl font-semibold mb-2 text-white">
                       {['Tranquil Pondside Garden', 'Cozy Bench in the Garden', 'Elegant Garden Pathway', 'Soothing Fountain Garden'][index]}
                     </h3>
                     <p className="text-sm text-white/80">

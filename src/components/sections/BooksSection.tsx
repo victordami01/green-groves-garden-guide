@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchGardenData } from '@/utils/dataService';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Book, ChevronDown } from 'lucide-react';
+import { Book, ChevronDown, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -45,6 +45,12 @@ const BooksSection = ({ fullPage = false }: BooksSectionProps) => {
     return bookImages[index % bookImages.length];
   };
 
+  // Generate Google Books search URL based on book title
+  const getGoogleBooksUrl = (title: string) => {
+    const searchQuery = encodeURIComponent(title);
+    return `https://www.google.com/search?tbm=bks&q=${searchQuery}`;
+  };
+
   return (
     <section id="books" className="section-container">
       <h2 className="section-title">Related Books</h2>
@@ -61,24 +67,31 @@ const BooksSection = ({ fullPage = false }: BooksSectionProps) => {
       ) : (
         <div className="card-grid">
           {displayedBooks.map((book, index) => (
-            <Link to={`/books/${index}`} key={index} className="garden-card-link">
-              <Card className="garden-card transition-transform hover:scale-[1.02]">
-                <div className="h-48 overflow-hidden">
-                  <img 
-                    src={getBookImage(book.image, index)} 
-                    alt={book.title} 
-                    className="garden-card-image" 
-                  />
-                </div>
-                <CardContent className="p-4">
-                  <h3 className="garden-card-title">{book.title}</h3>
-                  <p className="garden-card-description mb-4">{book.description}</p>
-                  <Button variant="outline" className="w-full text-garden-green border-garden-green hover:bg-garden-green/10">
-                    View Book Details
+            <Card key={index} className="garden-card transition-transform hover:scale-[1.02]">
+              <div className="h-48 overflow-hidden">
+                <img 
+                  src={getBookImage(book.image, index)} 
+                  alt={book.title} 
+                  className="garden-card-image" 
+                />
+              </div>
+              <CardContent className="p-4">
+                <h3 className="garden-card-title">{book.title}</h3>
+                <p className="garden-card-description mb-4">{book.description}</p>
+                <div className="flex space-x-2">
+                  <Button variant="outline" className="w-full text-garden-green border-garden-green hover:bg-garden-green/10" asChild>
+                    <Link to={`/books/${index}`}>
+                      View Details
+                    </Link>
                   </Button>
-                </CardContent>
-              </Card>
-            </Link>
+                  <Button variant="outline" className="text-garden-green border-garden-green hover:bg-garden-green/10" asChild>
+                    <a href={getGoogleBooksUrl(book.title)} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       )}
