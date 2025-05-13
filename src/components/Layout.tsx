@@ -49,8 +49,10 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <div className="min-h-screen bg-garden-white">
-      <Ticker />
-      <VisitorCounter />
+      <div className="sticky top-0 z-50">
+        <Ticker />
+        <VisitorCounter />
+      </div>
       
       <div className="pt-4">
         <Navbar onSearch={handleSearch} />

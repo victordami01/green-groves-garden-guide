@@ -20,18 +20,7 @@ declare global {
   }
 }
 
-// Add ScrollReveal for scroll animations
-const loadScrollReveal = async () => {
-  const ScrollReveal = (await import('scrollreveal')).default;
-  return ScrollReveal({
-    distance: '60px',
-    duration: 1200,
-    delay: 300,
-    reset: false
-  });
-};
-
-// Initialize Lottie animations
+// Add Lottie animations
 const loadLottie = async () => {
   await import('@lottiefiles/lottie-player');
 };
@@ -40,65 +29,12 @@ const queryClient = new QueryClient();
 
 const App = () => {
   useEffect(() => {
-    // Initialize ScrollReveal
-    const initScrollReveal = async () => {
-      const sr = await loadScrollReveal();
-      
-      // Reveal elements with delay
-      sr.reveal('.reveal-element', { 
-        origin: 'bottom',
-        interval: 150
-      });
-      
-      sr.reveal('.reveal-left', {
-        origin: 'left'
-      });
-      
-      sr.reveal('.reveal-right', {
-        origin: 'right'
-      });
-    };
-    
     // Initialize Lottie
     const initLottie = async () => {
       await loadLottie();
     };
     
-    // Handle slide-in animations using Intersection Observer
-    const handleIntersections = () => {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('slide-in-active');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      
-      // Observe elements with slide-in classes
-      document.querySelectorAll('.slide-in-left, .slide-in-right, .slide-in-bottom').forEach(el => {
-        observer.observe(el);
-      });
-      
-      // Text reveal animation
-      const textObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            textObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.5 });
-      
-      document.querySelectorAll('.reveal-text').forEach(el => {
-        textObserver.observe(el);
-      });
-    };
-    
-    // Initialize all animations
-    initScrollReveal();
     initLottie();
-    handleIntersections();
   }, []);
   
   return (
